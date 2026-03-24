@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { url } from '../../utils/links';
 
 const contactInfo = [
   {
@@ -77,9 +78,9 @@ const loanTypes = [
   <div class="bg-navy-900 border-b border-white/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
       <nav class="flex items-center gap-2 text-xs text-white/40" aria-label="Breadcrumb">
-        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <a href={url("/")} class="hover:text-white transition-colors">Home</a>
         <span>/</span>
-        <a href="/company/about" class="hover:text-white transition-colors">Company</a>
+        <a href={url("/company/about")} class="hover:text-white transition-colors">Company</a>
         <span>/</span>
         <span class="text-white/70">Contact</span>
       </nav>
@@ -128,13 +129,13 @@ const loanTypes = [
             <div class="mt-8 pt-6 border-t border-white/8">
               <h3 class="text-white text-sm font-bold mb-4">Quick Actions</h3>
               <div class="space-y-2">
-                <a href="/apply" class="flex items-center gap-2 text-cyan-500 text-sm font-semibold hover:text-cyan-400 transition-colors">
+                <a href={url("/apply")} class="flex items-center gap-2 text-cyan-500 text-sm font-semibold hover:text-cyan-400 transition-colors">
                   <span>&rarr;</span> Start Your Application
                 </a>
-                <a href="/tools/mortgage-calculator" class="flex items-center gap-2 text-cyan-500 text-sm font-semibold hover:text-cyan-400 transition-colors">
+                <a href={url("/tools/mortgage-calculator")} class="flex items-center gap-2 text-cyan-500 text-sm font-semibold hover:text-cyan-400 transition-colors">
                   <span>&rarr;</span> Use Our Calculator
                 </a>
-                <a href="/resources" class="flex items-center gap-2 text-cyan-500 text-sm font-semibold hover:text-cyan-400 transition-colors">
+                <a href={url("/resources")} class="flex items-center gap-2 text-cyan-500 text-sm font-semibold hover:text-cyan-400 transition-colors">
                   <span>&rarr;</span> Browse Learning Center
                 </a>
               </div>

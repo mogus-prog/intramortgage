@@ -1,28 +1,30 @@
 ---
+import { url } from '../utils/links';
+
 const loanLinks = [
-  { label: "Conventional Loans", href: "/loans/conventional" },
-  { label: "FHA Loans", href: "/loans/fha" },
-  { label: "VA Loans", href: "/loans/va" },
-  { label: "USDA Loans", href: "/loans/usda" },
-  { label: "Jumbo Loans", href: "/loans/jumbo" },
-  { label: "Refinance", href: "/loans/refinance" },
-  { label: "First-Time Buyers", href: "/loans/first-time-buyer" },
+  { label: "Conventional Loans", href: url("/loans/conventional") },
+  { label: "FHA Loans", href: url("/loans/fha") },
+  { label: "VA Loans", href: url("/loans/va") },
+  { label: "USDA Loans", href: url("/loans/usda") },
+  { label: "Jumbo Loans", href: url("/loans/jumbo") },
+  { label: "Refinance", href: url("/loans/refinance") },
+  { label: "First-Time Buyers", href: url("/loans/first-time-buyer") },
 ];
 
 const resourceLinks = [
-  { label: "Mortgage Calculator", href: "/tools/mortgage-calculator" },
-  { label: "AI Assistant", href: "/#chat" },
-  { label: "Learning Center", href: "/resources" },
-  { label: "Mortgage Glossary", href: "/resources/glossary" },
-  { label: "Apply Now", href: "/apply" },
+  { label: "Mortgage Calculator", href: url("/tools/mortgage-calculator") },
+  { label: "AI Assistant", href: url("/#chat") },
+  { label: "Learning Center", href: url("/resources") },
+  { label: "Mortgage Glossary", href: url("/resources/glossary") },
+  { label: "Apply Now", href: url("/apply") },
 ];
 
 const companyLinks = [
-  { label: "About Us", href: "/company/about" },
-  { label: "Our Team", href: "/company/team" },
-  { label: "Reviews", href: "/company/reviews" },
-  { label: "Careers", href: "/company/careers" },
-  { label: "Contact", href: "/company/contact" },
+  { label: "About Us", href: url("/company/about") },
+  { label: "Our Team", href: url("/company/team") },
+  { label: "Reviews", href: url("/company/reviews") },
+  { label: "Careers", href: url("/company/careers") },
+  { label: "Contact", href: url("/company/contact") },
 ];
 ---
 
@@ -31,7 +33,7 @@ const companyLinks = [
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
       <!-- Brand Column -->
       <div>
-        <a href="/" class="inline-block">
+        <a href={url("/")} class="inline-block">
           <img src={`${import.meta.env.BASE_URL}logo-white.svg`} alt="Intra Mortgage" class="h-10 w-auto" />
         </a>
         <p class="mt-4 text-white/40 text-sm leading-relaxed">
@@ -94,10 +96,10 @@ const companyLinks = [
         &copy; 2026 Intra Mortgage. All rights reserved. Equal Housing Lender.
       </p>
       <div class="flex gap-6">
-        <a href="/privacy" class="text-white/30 hover:text-white/60 text-xs transition-colors">Privacy Policy</a>
-        <a href="/terms" class="text-white/30 hover:text-white/60 text-xs transition-colors">Terms of Use</a>
-        <a href="/nmls" class="text-white/30 hover:text-white/60 text-xs transition-colors">NMLS Consumer Access</a>
-        <a href="/licensing" class="text-white/30 hover:text-white/60 text-xs transition-colors">Licensing</a>
+        <a href={url("/privacy")} class="text-white/30 hover:text-white/60 text-xs transition-colors">Privacy Policy</a>
+        <a href={url("/terms")} class="text-white/30 hover:text-white/60 text-xs transition-colors">Terms of Use</a>
+        <a href={url("/nmls")} class="text-white/30 hover:text-white/60 text-xs transition-colors">NMLS Consumer Access</a>
+        <a href={url("/licensing")} class="text-white/30 hover:text-white/60 text-xs transition-colors">Licensing</a>
       </div>
     </div>
   </div>

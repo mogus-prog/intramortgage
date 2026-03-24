@@ -1,21 +1,23 @@
 ---
+import { url } from '../utils/links';
+
 const navLinks = [
   {
     label: "Loan Programs",
-    href: "/loans",
+    href: url("/loans"),
     children: [
-      { label: "Conventional Loans", href: "/loans/conventional" },
-      { label: "FHA Loans", href: "/loans/fha" },
-      { label: "VA Loans", href: "/loans/va" },
-      { label: "USDA Loans", href: "/loans/usda" },
-      { label: "Jumbo Loans", href: "/loans/jumbo" },
-      { label: "Refinance", href: "/loans/refinance" },
-      { label: "First-Time Buyer", href: "/loans/first-time-buyer" },
+      { label: "Conventional Loans", href: url("/loans/conventional") },
+      { label: "FHA Loans", href: url("/loans/fha") },
+      { label: "VA Loans", href: url("/loans/va") },
+      { label: "USDA Loans", href: url("/loans/usda") },
+      { label: "Jumbo Loans", href: url("/loans/jumbo") },
+      { label: "Refinance", href: url("/loans/refinance") },
+      { label: "First-Time Buyer", href: url("/loans/first-time-buyer") },
     ],
   },
-  { label: "Calculators", href: "/tools/mortgage-calculator" },
-  { label: "Resources", href: "/resources" },
-  { label: "About", href: "/company/about" },
+  { label: "Calculators", href: url("/tools/mortgage-calculator") },
+  { label: "Resources", href: url("/resources") },
+  { label: "About", href: url("/company/about") },
 ];
 ---
 
@@ -23,7 +25,7 @@ const navLinks = [
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-18 py-4">
       <!-- Logo -->
-      <a href="/" class="flex items-center">
+      <a href={url("/")} class="flex items-center">
         <img src={`${import.meta.env.BASE_URL}logo-white.svg`} alt="Intra Mortgage" class="h-10 w-auto" />
       </a>
 
@@ -69,7 +71,7 @@ const navLinks = [
           (800) 555-0199
         </a>
         <a
-          href="/apply"
+          href={url("/apply")}
           class="bg-cyan-500 hover:bg-cyan-400 text-white text-sm font-semibold px-6 py-2.5 rounded-lg transition-colors"
         >
           Apply Now
@@ -106,7 +108,7 @@ const navLinks = [
       ))}
       <div class="pt-4 border-t border-white/10 space-y-3">
         <a href="tel:+18005550199" class="block py-2 px-3 text-white/80 text-sm">📞 (800) 555-0199</a>
-        <a href="/apply" class="block bg-cyan-500 text-white text-center py-3 px-4 rounded-lg font-semibold">Apply Now</a>
+        <a href={url("/apply")} class="block bg-cyan-500 text-white text-center py-3 px-4 rounded-lg font-semibold">Apply Now</a>
       </div>
     </div>
   </div>

@@ -1,6 +1,10 @@
 import { useState, useMemo } from 'react';
 
-export default function MortgageCalculator() {
+interface MortgageCalculatorProps {
+  baseUrl?: string;
+}
+
+export default function MortgageCalculator({ baseUrl = '/' }: MortgageCalculatorProps) {
   const [homePrice, setHomePrice] = useState(425000);
   const [downPayment, setDownPayment] = useState(85000);
   const [interestRate, setInterestRate] = useState(6.25);
@@ -110,7 +114,7 @@ export default function MortgageCalculator() {
       </div>
 
       <a
-        href="/apply"
+        href={`${baseUrl.replace(/\/$/, '')}/apply`}
         className="block mt-4 bg-cyan-500 hover:bg-cyan-400 text-white text-center py-3 rounded-xl text-sm font-bold transition-colors"
       >
         Get Your Real Rate →

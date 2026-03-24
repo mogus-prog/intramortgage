@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { url } from '../../utils/links';
 
 const terms = [
   { term: "Adjustable-Rate Mortgage (ARM)", definition: "A mortgage with an interest rate that changes periodically based on a benchmark index. ARMs typically start with a lower fixed rate for an initial period (e.g., 5 or 7 years), then adjust annually. They can be advantageous if you plan to sell or refinance before the adjustment period begins." },
@@ -73,9 +74,9 @@ const letters = Object.keys(grouped).sort();
   <div class="bg-navy-900 border-b border-white/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
       <nav class="flex items-center gap-2 text-xs text-white/40" aria-label="Breadcrumb">
-        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <a href={url("/")} class="hover:text-white transition-colors">Home</a>
         <span>/</span>
-        <a href="/resources" class="hover:text-white transition-colors">Resources</a>
+        <a href={url("/resources")} class="hover:text-white transition-colors">Resources</a>
         <span>/</span>
         <span class="text-white/70">Glossary</span>
       </nav>
@@ -130,10 +131,10 @@ const letters = Object.keys(grouped).sort();
       <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3">Have Questions About a Term?</h2>
       <p class="text-white/85 text-base mb-8">Our loan officers are happy to walk you through any mortgage concept in detail.</p>
       <div class="flex flex-wrap justify-center gap-4">
-        <a href="/company/contact" class="inline-block bg-white text-cyan-600 text-sm font-bold px-10 py-4 rounded-xl hover:bg-white/90 transition-colors">
+        <a href={url("/company/contact")} class="inline-block bg-white text-cyan-600 text-sm font-bold px-10 py-4 rounded-xl hover:bg-white/90 transition-colors">
           Talk to an Expert &rarr;
         </a>
-        <a href="/apply" class="inline-block bg-white/20 text-white text-sm font-bold px-10 py-4 rounded-xl border border-white/30 hover:bg-white/30 transition-colors">
+        <a href={url("/apply")} class="inline-block bg-white/20 text-white text-sm font-bold px-10 py-4 rounded-xl border border-white/30 hover:bg-white/30 transition-colors">
           Get Pre-Approved
         </a>
       </div>

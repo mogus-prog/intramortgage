@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { url } from '../../utils/links';
 
 const team = [
   {
@@ -87,9 +88,9 @@ const team = [
   <div class="bg-navy-900 border-b border-white/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
       <nav class="flex items-center gap-2 text-xs text-white/40" aria-label="Breadcrumb">
-        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <a href={url("/")} class="hover:text-white transition-colors">Home</a>
         <span>/</span>
-        <a href="/company/about" class="hover:text-white transition-colors">Company</a>
+        <a href={url("/company/about")} class="hover:text-white transition-colors">Company</a>
         <span>/</span>
         <span class="text-white/70">Our Team</span>
       </nav>
@@ -146,10 +147,10 @@ const team = [
         Competitive compensation, comprehensive benefits, and a culture that values growth, innovation, and work-life balance.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
-        <a href="/company/careers" class="inline-block bg-white text-cyan-600 text-sm font-bold px-10 py-4 rounded-xl hover:bg-white/90 transition-colors">
+        <a href={url("/company/careers")} class="inline-block bg-white text-cyan-600 text-sm font-bold px-10 py-4 rounded-xl hover:bg-white/90 transition-colors">
           View Open Positions &rarr;
         </a>
-        <a href="/company/contact" class="inline-block bg-white/20 text-white text-sm font-bold px-10 py-4 rounded-xl border border-white/30 hover:bg-white/30 transition-colors">
+        <a href={url("/company/contact")} class="inline-block bg-white/20 text-white text-sm font-bold px-10 py-4 rounded-xl border border-white/30 hover:bg-white/30 transition-colors">
           Contact Us
         </a>
       </div>

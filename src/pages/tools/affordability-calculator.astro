@@ -1,4 +1,5 @@
 ---
+import { url } from '../../utils/links';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import MortgageCalculator from '../../components/MortgageCalculator.tsx';
 
@@ -79,9 +80,9 @@ const factors = [
   <div class="bg-navy-900 border-b border-white/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
       <nav class="flex items-center gap-2 text-xs text-white/40" aria-label="Breadcrumb">
-        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <a href={url("/")} class="hover:text-white transition-colors">Home</a>
         <span>/</span>
-        <a href="/tools/mortgage-calculator" class="hover:text-white transition-colors">Tools</a>
+        <a href={url("/tools/mortgage-calculator")} class="hover:text-white transition-colors">Tools</a>
         <span>/</span>
         <span class="text-white/70">Affordability Calculator</span>
       </nav>
@@ -99,7 +100,7 @@ const factors = [
             <div class="fade-up">
               <h2 class="text-white font-bold text-lg mb-3">Estimate Your Budget</h2>
               <p class="text-white/50 text-sm leading-relaxed mb-6">Adjust the sliders to find a comfortable price range. Start with the maximum home price you're considering and see what the monthly payment looks like.</p>
-              <MortgageCalculator client:load />
+              <MortgageCalculator client:load baseUrl={import.meta.env.BASE_URL} />
             </div>
 
             <div class="space-y-6 fade-up">
@@ -203,10 +204,10 @@ const factors = [
             <div class="glass rounded-2xl p-6">
               <h3 class="text-white text-sm font-bold mb-4">Related Tools</h3>
               <div class="space-y-2">
-                <a href="/tools/mortgage-calculator" class="block px-3 py-2.5 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">
+                <a href={url("/tools/mortgage-calculator")} class="block px-3 py-2.5 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">
                   Mortgage Calculator
                 </a>
-                <a href="/tools/refinance-calculator" class="block px-3 py-2.5 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">
+                <a href={url("/tools/refinance-calculator")} class="block px-3 py-2.5 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">
                   Refinance Calculator
                 </a>
               </div>
@@ -215,13 +216,13 @@ const factors = [
             <div class="glass rounded-2xl p-6">
               <h3 class="text-white text-sm font-bold mb-3">Related Articles</h3>
               <div class="space-y-2">
-                <a href="/resources/how-much-house-can-you-afford" class="block px-3 py-2.5 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">
+                <a href={url("/resources/how-much-house-can-you-afford")} class="block px-3 py-2.5 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">
                   How Much House Can You Afford?
                 </a>
-                <a href="/resources/first-time-homebuyer-guide" class="block px-3 py-2.5 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">
+                <a href={url("/resources/first-time-homebuyer-guide")} class="block px-3 py-2.5 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">
                   First-Time Homebuyer Guide
                 </a>
-                <a href="/resources/mortgage-rate-forecast" class="block px-3 py-2.5 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">
+                <a href={url("/resources/mortgage-rate-forecast")} class="block px-3 py-2.5 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">
                   Mortgage Rate Forecast
                 </a>
               </div>
@@ -232,7 +233,7 @@ const factors = [
               <p class="text-white/50 text-xs leading-relaxed mb-4">
                 Get a personalized pre-approval based on your actual financial picture. It only takes a few minutes.
               </p>
-              <a href="/apply" class="block bg-cyan-500 hover:bg-cyan-400 text-white text-center py-3 rounded-xl font-bold text-sm transition-colors">
+              <a href={url("/apply")} class="block bg-cyan-500 hover:bg-cyan-400 text-white text-center py-3 rounded-xl font-bold text-sm transition-colors">
                 Get Pre-Approved &rarr;
               </a>
             </div>
@@ -256,10 +257,10 @@ const factors = [
       <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3">Ready to Start House Hunting?</h2>
       <p class="text-white/85 text-base mb-8">Get pre-approved and shop with confidence. Our team will help you find the perfect loan for your budget.</p>
       <div class="flex flex-wrap justify-center gap-4">
-        <a href="/apply" class="inline-block bg-white text-cyan-600 text-sm font-bold px-10 py-4 rounded-xl hover:bg-white/90 transition-colors">
+        <a href={url("/apply")} class="inline-block bg-white text-cyan-600 text-sm font-bold px-10 py-4 rounded-xl hover:bg-white/90 transition-colors">
           Get Pre-Approved &rarr;
         </a>
-        <a href="/company/contact" class="inline-block bg-white/20 text-white text-sm font-bold px-10 py-4 rounded-xl border border-white/30 hover:bg-white/30 transition-colors">
+        <a href={url("/company/contact")} class="inline-block bg-white/20 text-white text-sm font-bold px-10 py-4 rounded-xl border border-white/30 hover:bg-white/30 transition-colors">
           Talk to an Expert
         </a>
       </div>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { url } from '../../utils/links';
 
 const benefits = [
   {
@@ -90,9 +91,9 @@ const jobs = [
   <div class="bg-navy-900 border-b border-white/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
       <nav class="flex items-center gap-2 text-xs text-white/40" aria-label="Breadcrumb">
-        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <a href={url("/")} class="hover:text-white transition-colors">Home</a>
         <span>/</span>
-        <a href="/company/about" class="hover:text-white transition-colors">Company</a>
+        <a href={url("/company/about")} class="hover:text-white transition-colors">Company</a>
         <span>/</span>
         <span class="text-white/70">Careers</span>
       </nav>
@@ -168,7 +169,7 @@ const jobs = [
       </div>
       <div class="space-y-4">
         {jobs.map((job) => (
-          <a href="/company/contact" class="group glass rounded-2xl p-6 block hover-card fade-up">
+          <a href={url("/company/contact")} class="group glass rounded-2xl p-6 block hover-card fade-up">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div class="flex-1">
                 <h3 class="text-white text-lg font-bold group-hover:text-cyan-400 transition-colors">{job.title}</h3>
@@ -211,7 +212,7 @@ const jobs = [
     <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
       <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3">Do Not See Your Role?</h2>
       <p class="text-white/85 text-base mb-8">Send us your resume and tell us what excites you about Intra Mortgage. We are always looking for exceptional people.</p>
-      <a href="/company/contact" class="inline-block bg-white text-cyan-600 text-sm font-bold px-10 py-4 rounded-xl hover:bg-white/90 transition-colors">
+      <a href={url("/company/contact")} class="inline-block bg-white text-cyan-600 text-sm font-bold px-10 py-4 rounded-xl hover:bg-white/90 transition-colors">
         Get in Touch &rarr;
       </a>
     </div>

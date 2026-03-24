@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { url } from '../../utils/links';
 
 const values = [
   {
@@ -86,9 +87,9 @@ const team = [
   <div class="bg-navy-900 border-b border-white/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
       <nav class="flex items-center gap-2 text-xs text-white/40" aria-label="Breadcrumb">
-        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <a href={url("/")} class="hover:text-white transition-colors">Home</a>
         <span>/</span>
-        <a href="/company/about" class="hover:text-white transition-colors">Company</a>
+        <a href={url("/company/about")} class="hover:text-white transition-colors">Company</a>
         <span>/</span>
         <span class="text-white/70">About Us</span>
       </nav>
@@ -215,10 +216,10 @@ const team = [
       <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3">Let's Work Together</h2>
       <p class="text-white/85 text-base mb-8">Have questions or ready to get started? Our team would love to hear from you.</p>
       <div class="flex flex-wrap justify-center gap-4">
-        <a href="/apply" class="inline-block bg-white text-cyan-600 text-sm font-bold px-10 py-4 rounded-xl hover:bg-white/90 transition-colors">
+        <a href={url("/apply")} class="inline-block bg-white text-cyan-600 text-sm font-bold px-10 py-4 rounded-xl hover:bg-white/90 transition-colors">
           Start Your Application &rarr;
         </a>
-        <a href="/company/contact" class="inline-block bg-white/20 text-white text-sm font-bold px-10 py-4 rounded-xl border border-white/30 hover:bg-white/30 transition-colors">
+        <a href={url("/company/contact")} class="inline-block bg-white/20 text-white text-sm font-bold px-10 py-4 rounded-xl border border-white/30 hover:bg-white/30 transition-colors">
           Contact Us
         </a>
       </div>
