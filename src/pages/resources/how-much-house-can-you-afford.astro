@@ -1,0 +1,413 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much house can I afford on a $100,000 salary?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On a $100,000 salary, most lenders will approve you for a home priced between $300,000 and $420,000, depending on your debts, down payment, interest rate, and location. Using the 28% rule, your maximum monthly housing payment would be about $2,333."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the 28/36 rule for mortgages?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The 28/36 rule states that no more than 28% of your gross monthly income should go toward housing costs (mortgage, taxes, insurance), and no more than 36% should go toward total debt payments including housing, car loans, student loans, and credit cards."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much should I save for a down payment?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "While 20% down is ideal to avoid PMI, many loan programs allow much less. Conventional loans may require as little as 3% down, FHA loans require 3.5%, and VA and USDA loans offer 0% down payment options for eligible borrowers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What hidden costs should I budget for when buying a home?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Beyond your mortgage payment, budget for closing costs (2-5% of the loan), property taxes, homeowner's insurance, PMI if applicable, HOA fees, home maintenance (1-2% of home value per year), and moving expenses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does my debt-to-income ratio affect how much house I can afford?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Your debt-to-income (DTI) ratio is one of the most important factors lenders consider. Most conventional loans require a DTI of 43% or less. The lower your DTI, the more home you can afford and the better rates you'll qualify for."
+      }
+    }
+  ]
+};
+
+const publishDate = "2026-03-15";
+const updateDate = "2026-03-20";
+---
+
+<BaseLayout
+  title="How Much House Can You Afford in 2026? | Intra Mortgage"
+  description="Learn how to calculate how much house you can afford using income-based rules, debt-to-income ratios, and real-world budgeting strategies. Includes the 28/36 rule and hidden costs."
+  canonicalUrl="/resources/how-much-house-can-you-afford"
+  schema={schema}
+>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="relative overflow-hidden -mt-18">
+    <img
+      src="https://images.unsplash.com/photo-1560184897-ae75f418493e?w=1600&h=600&fit=crop&crop=center"
+      alt="Modern home with warm lighting at dusk"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-950/85 to-navy-950/50"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-20 md:pt-44 md:pb-24">
+      <div class="max-w-2xl">
+        <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-4">Buying Guide</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.08] mb-6">
+          How Much House Can<br />You <span class="text-gradient">Actually Afford?</span>
+        </h1>
+        <div class="flex items-center gap-4 text-white/40 text-xs">
+          <time datetime={publishDate}>March 15, 2026</time>
+          <span>&middot;</span>
+          <span>5 min read</span>
+          <span>&middot;</span>
+          <span>Updated <time datetime={updateDate}>March 20, 2026</time></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BREADCRUMB ==================== -->
+  <div class="bg-navy-900 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <nav class="flex items-center gap-2 text-xs text-white/40" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <a href="/resources" class="hover:text-white transition-colors">Resources</a>
+        <span>/</span>
+        <span class="text-white/70">How Much House Can You Afford</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ==================== ARTICLE ==================== -->
+  <section class="section-padding bg-navy-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-[1fr_320px] gap-12">
+
+        <!-- Article Content -->
+        <article class="max-w-none">
+
+          <!-- Introduction -->
+          <div class="fade-up mb-12">
+            <div class="text-white/60 text-base leading-relaxed space-y-4">
+              <p class="text-lg text-white/70">
+                Buying a home is the biggest financial decision most people will ever make. Before you start scrolling through listings or attending open houses, the most important step is figuring out what you can truly afford — not just what a lender will approve you for.
+              </p>
+              <p>
+                The price a bank says you can borrow and the amount you should borrow are often two very different numbers. This guide walks you through the formulas, rules, and real-world considerations that will help you set a budget you're comfortable with.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section: Income-Based Rules -->
+          <div class="fade-up mb-12">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-4">Income-Based Rules of Thumb</h2>
+            <div class="text-white/55 text-sm leading-relaxed space-y-4">
+              <p>
+                The simplest starting point is to look at your gross annual income. Several well-known guidelines can give you a rough price range:
+              </p>
+            </div>
+            <div class="grid sm:grid-cols-3 gap-4 mt-6">
+              <div class="glass rounded-2xl p-5 hover-card text-center">
+                <div class="text-cyan-500 text-2xl font-extrabold mb-2">2.5&ndash;3x</div>
+                <div class="text-white text-sm font-bold mb-1">Conservative Rule</div>
+                <div class="text-white/40 text-xs leading-relaxed">Multiply your gross annual income by 2.5 to 3 for a safe home price range.</div>
+              </div>
+              <div class="glass rounded-2xl p-5 hover-card text-center">
+                <div class="text-cyan-500 text-2xl font-extrabold mb-2">28%</div>
+                <div class="text-white text-sm font-bold mb-1">Front-End Ratio</div>
+                <div class="text-white/40 text-xs leading-relaxed">Housing costs should be no more than 28% of your gross monthly income.</div>
+              </div>
+              <div class="glass rounded-2xl p-5 hover-card text-center">
+                <div class="text-cyan-500 text-2xl font-extrabold mb-2">36%</div>
+                <div class="text-white text-sm font-bold mb-1">Back-End Ratio</div>
+                <div class="text-white/40 text-xs leading-relaxed">Total debt payments (including housing) should stay below 36% of gross income.</div>
+              </div>
+            </div>
+            <div class="text-white/55 text-sm leading-relaxed space-y-4 mt-6">
+              <p>
+                For example, if your household earns $100,000 per year, the conservative rule suggests looking at homes priced between $250,000 and $300,000. The 28% rule gives you a maximum monthly housing payment of about $2,333.
+              </p>
+              <p>
+                These rules are helpful starting points, but they don't account for your full financial picture — your debts, savings, lifestyle, and local cost of living all play a role.
+              </p>
+            </div>
+          </div>
+
+          <!-- Editorial Image -->
+          <div class="fade-up mb-12 rounded-2xl overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&h=400&fit=crop"
+              alt="Person reviewing financial documents and calculator"
+              class="w-full h-64 md:h-80 object-cover"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Section: DTI Ratio -->
+          <div class="fade-up mb-12">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-4">Understanding Debt-to-Income Ratio</h2>
+            <div class="text-white/55 text-sm leading-relaxed space-y-4">
+              <p>
+                Your debt-to-income (DTI) ratio is one of the most important numbers in the mortgage process. It tells lenders how much of your monthly income is already committed to debt payments.
+              </p>
+              <p>
+                To calculate your DTI, add up all monthly debt payments — car loans, student loans, credit card minimums, personal loans, and your projected mortgage payment — then divide by your gross monthly income.
+              </p>
+            </div>
+            <div class="glass rounded-2xl p-6 mt-6">
+              <h3 class="text-white font-bold text-base mb-4">DTI Thresholds by Loan Type</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center py-2 border-b border-white/6">
+                  <span class="text-white/60 text-sm">Conventional Loans</span>
+                  <span class="text-cyan-500 font-bold text-sm">Up to 43% DTI</span>
+                </div>
+                <div class="flex justify-between items-center py-2 border-b border-white/6">
+                  <span class="text-white/60 text-sm">FHA Loans</span>
+                  <span class="text-cyan-500 font-bold text-sm">Up to 50% DTI</span>
+                </div>
+                <div class="flex justify-between items-center py-2 border-b border-white/6">
+                  <span class="text-white/60 text-sm">VA Loans</span>
+                  <span class="text-cyan-500 font-bold text-sm">No strict limit (41% guideline)</span>
+                </div>
+                <div class="flex justify-between items-center py-2">
+                  <span class="text-white/60 text-sm">USDA Loans</span>
+                  <span class="text-cyan-500 font-bold text-sm">Up to 41% DTI</span>
+                </div>
+              </div>
+            </div>
+            <div class="text-white/55 text-sm leading-relaxed space-y-4 mt-6">
+              <p>
+                A lower DTI ratio not only helps you qualify for a mortgage but also gives you a better interest rate. If your DTI is above 36%, consider paying down debts before applying to maximize your buying power.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section: Down Payment -->
+          <div class="fade-up mb-12">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-4">Down Payment Considerations</h2>
+            <div class="text-white/55 text-sm leading-relaxed space-y-4">
+              <p>
+                The size of your down payment has a major impact on your monthly payment, interest rate, and whether you'll need to pay private mortgage insurance (PMI). While 20% down has been the traditional benchmark, many programs today allow for much smaller down payments.
+              </p>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4 mt-6">
+              <div class="glass rounded-2xl p-5 hover-card">
+                <h3 class="text-white text-sm font-bold mb-2">Conventional (3% Down)</h3>
+                <p class="text-white/45 text-xs leading-relaxed">Available to qualified buyers. PMI required until you reach 20% equity. Good option if you have strong credit but limited savings.</p>
+              </div>
+              <div class="glass rounded-2xl p-5 hover-card">
+                <h3 class="text-white text-sm font-bold mb-2">FHA (3.5% Down)</h3>
+                <p class="text-white/45 text-xs leading-relaxed">Popular with first-time buyers. More flexible credit requirements. Mortgage insurance is required for the life of the loan in most cases.</p>
+              </div>
+              <div class="glass rounded-2xl p-5 hover-card">
+                <h3 class="text-white text-sm font-bold mb-2">VA (0% Down)</h3>
+                <p class="text-white/45 text-xs leading-relaxed">Exclusive to veterans and active military. No down payment or PMI required. One of the best mortgage programs available.</p>
+              </div>
+              <div class="glass rounded-2xl p-5 hover-card">
+                <h3 class="text-white text-sm font-bold mb-2">USDA (0% Down)</h3>
+                <p class="text-white/45 text-xs leading-relaxed">Available in eligible rural and suburban areas. Income limits apply. Great for buyers in qualifying locations.</p>
+              </div>
+            </div>
+            <div class="text-white/55 text-sm leading-relaxed space-y-4 mt-6">
+              <p>
+                Remember that your down payment isn't the only cash you'll need at closing. You'll also need to cover closing costs (typically 2-5% of the loan amount), as well as reserves for moving expenses and initial home maintenance.
+              </p>
+            </div>
+          </div>
+
+          <!-- Editorial Image -->
+          <div class="fade-up mb-12 rounded-2xl overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=900&h=400&fit=crop"
+              alt="Family standing outside their new home"
+              class="w-full h-64 md:h-80 object-cover"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Section: Hidden Costs -->
+          <div class="fade-up mb-12">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-4">Hidden Costs Most Buyers Miss</h2>
+            <div class="text-white/55 text-sm leading-relaxed space-y-4">
+              <p>
+                Your mortgage payment is only one piece of the homeownership puzzle. Many first-time buyers are surprised by the additional costs that come with owning a home. Factoring these in from the start will prevent financial stress down the road.
+              </p>
+            </div>
+            <div class="glass rounded-2xl p-6 mt-6">
+              <div class="space-y-4">
+                <div class="flex gap-4 items-start">
+                  <div class="w-8 h-8 shrink-0 bg-cyan-500/10 border border-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-500 text-xs font-bold">1</div>
+                  <div>
+                    <h4 class="text-white text-sm font-bold">Property Taxes</h4>
+                    <p class="text-white/45 text-xs leading-relaxed mt-1">Varies widely by location. Average is 1-2% of home value per year. A $400K home could mean $4,000-$8,000 annually in property taxes.</p>
+                  </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                  <div class="w-8 h-8 shrink-0 bg-cyan-500/10 border border-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-500 text-xs font-bold">2</div>
+                  <div>
+                    <h4 class="text-white text-sm font-bold">Homeowner's Insurance</h4>
+                    <p class="text-white/45 text-xs leading-relaxed mt-1">Required by all lenders. Costs vary by location, coverage amount, and home characteristics. Budget $1,200-$3,000+ per year.</p>
+                  </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                  <div class="w-8 h-8 shrink-0 bg-cyan-500/10 border border-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-500 text-xs font-bold">3</div>
+                  <div>
+                    <h4 class="text-white text-sm font-bold">Private Mortgage Insurance (PMI)</h4>
+                    <p class="text-white/45 text-xs leading-relaxed mt-1">Required if you put less than 20% down on a conventional loan. Typically costs 0.5-1% of the loan amount per year.</p>
+                  </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                  <div class="w-8 h-8 shrink-0 bg-cyan-500/10 border border-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-500 text-xs font-bold">4</div>
+                  <div>
+                    <h4 class="text-white text-sm font-bold">HOA Fees</h4>
+                    <p class="text-white/45 text-xs leading-relaxed mt-1">Common in condos, townhomes, and planned communities. Can range from $100 to $500+ per month depending on amenities.</p>
+                  </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                  <div class="w-8 h-8 shrink-0 bg-cyan-500/10 border border-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-500 text-xs font-bold">5</div>
+                  <div>
+                    <h4 class="text-white text-sm font-bold">Maintenance & Repairs</h4>
+                    <p class="text-white/45 text-xs leading-relaxed mt-1">Budget 1-2% of the home's value per year for ongoing maintenance. A $400K home means setting aside $4,000-$8,000 annually.</p>
+                  </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                  <div class="w-8 h-8 shrink-0 bg-cyan-500/10 border border-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-500 text-xs font-bold">6</div>
+                  <div>
+                    <h4 class="text-white text-sm font-bold">Closing Costs</h4>
+                    <p class="text-white/45 text-xs leading-relaxed mt-1">Typically 2-5% of the loan amount, paid at closing. Includes appraisal, title insurance, attorney fees, and origination charges.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="fade-up mb-12">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-6">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+              <div class="glass rounded-2xl p-6">
+                <h3 class="text-white font-bold text-sm mb-2">How much house can I afford on a $100,000 salary?</h3>
+                <p class="text-white/50 text-sm leading-relaxed">On a $100,000 salary, most lenders will approve you for a home priced between $300,000 and $420,000, depending on your debts, down payment, interest rate, and location. Using the 28% rule, your maximum monthly housing payment would be about $2,333.</p>
+              </div>
+              <div class="glass rounded-2xl p-6">
+                <h3 class="text-white font-bold text-sm mb-2">What is the 28/36 rule for mortgages?</h3>
+                <p class="text-white/50 text-sm leading-relaxed">The 28/36 rule states that no more than 28% of your gross monthly income should go toward housing costs (mortgage, taxes, insurance), and no more than 36% should go toward total debt payments including housing, car loans, student loans, and credit cards.</p>
+              </div>
+              <div class="glass rounded-2xl p-6">
+                <h3 class="text-white font-bold text-sm mb-2">How much should I save for a down payment?</h3>
+                <p class="text-white/50 text-sm leading-relaxed">While 20% down is ideal to avoid PMI, many loan programs allow much less. Conventional loans may require as little as 3% down, FHA loans require 3.5%, and VA and USDA loans offer 0% down payment options for eligible borrowers.</p>
+              </div>
+              <div class="glass rounded-2xl p-6">
+                <h3 class="text-white font-bold text-sm mb-2">What hidden costs should I budget for when buying a home?</h3>
+                <p class="text-white/50 text-sm leading-relaxed">Beyond your mortgage payment, budget for closing costs (2-5% of the loan), property taxes, homeowner's insurance, PMI if applicable, HOA fees, home maintenance (1-2% of home value per year), and moving expenses.</p>
+              </div>
+              <div class="glass rounded-2xl p-6">
+                <h3 class="text-white font-bold text-sm mb-2">Does my debt-to-income ratio affect how much house I can afford?</h3>
+                <p class="text-white/50 text-sm leading-relaxed">Yes. Your DTI ratio is one of the most important factors lenders consider. Most conventional loans require a DTI of 43% or less. The lower your DTI, the more home you can afford and the better rates you'll qualify for.</p>
+              </div>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="fade-up">
+          <div class="lg:sticky lg:top-28 space-y-6">
+            <div class="glass rounded-2xl p-6">
+              <h3 class="text-white text-sm font-bold mb-4">In This Article</h3>
+              <div class="space-y-1">
+                <a href="#" class="block px-3 py-2 rounded-lg text-xs text-white/50 hover:text-white hover:bg-white/5 transition-all">Income-Based Rules</a>
+                <a href="#" class="block px-3 py-2 rounded-lg text-xs text-white/50 hover:text-white hover:bg-white/5 transition-all">Debt-to-Income Ratio</a>
+                <a href="#" class="block px-3 py-2 rounded-lg text-xs text-white/50 hover:text-white hover:bg-white/5 transition-all">Down Payment Options</a>
+                <a href="#" class="block px-3 py-2 rounded-lg text-xs text-white/50 hover:text-white hover:bg-white/5 transition-all">Hidden Costs</a>
+                <a href="#" class="block px-3 py-2 rounded-lg text-xs text-white/50 hover:text-white hover:bg-white/5 transition-all">FAQ</a>
+              </div>
+            </div>
+
+            <div class="glass rounded-2xl p-6">
+              <h3 class="text-white text-sm font-bold mb-3">Related Articles</h3>
+              <div class="space-y-2">
+                <a href="/resources/first-time-homebuyer-guide" class="block px-3 py-2.5 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">
+                  First-Time Homebuyer Guide
+                </a>
+                <a href="/resources/mortgage-rate-forecast" class="block px-3 py-2.5 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">
+                  Mortgage Rate Forecast
+                </a>
+              </div>
+            </div>
+
+            <div class="glass rounded-2xl p-6">
+              <h3 class="text-white text-sm font-bold mb-3">Free Tools</h3>
+              <div class="space-y-2">
+                <a href="/tools/mortgage-calculator" class="block px-3 py-2.5 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">
+                  Mortgage Calculator
+                </a>
+                <a href="/tools/affordability-calculator" class="block px-3 py-2.5 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">
+                  Affordability Calculator
+                </a>
+                <a href="/tools/refinance-calculator" class="block px-3 py-2.5 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">
+                  Refinance Calculator
+                </a>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-cyan-500/15 to-cyan-600/10 rounded-2xl p-6 border border-cyan-500/20">
+              <h3 class="text-white text-sm font-bold mb-2">Know Your Budget</h3>
+              <p class="text-white/50 text-xs leading-relaxed mb-4">
+                Get pre-approved to see exactly what you qualify for. It's free, fast, and doesn't impact your credit score.
+              </p>
+              <a href="/apply" class="block bg-cyan-500 hover:bg-cyan-400 text-white text-center py-3 rounded-xl font-bold text-sm transition-colors">
+                Get Pre-Approved &rarr;
+              </a>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="relative overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1600&h=500&fit=crop"
+      alt="Beautiful home interior with natural light"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/92 to-cyan-600/88"></div>
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3">Ready to Find Your Perfect Home?</h2>
+      <p class="text-white/85 text-base mb-8">Get pre-approved and start shopping with confidence. Our experts will guide you every step of the way.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/apply" class="inline-block bg-white text-cyan-600 text-sm font-bold px-10 py-4 rounded-xl hover:bg-white/90 transition-colors">
+          Get Pre-Approved &rarr;
+        </a>
+        <a href="/company/contact" class="inline-block bg-white/20 text-white text-sm font-bold px-10 py-4 rounded-xl border border-white/30 hover:bg-white/30 transition-colors">
+          Talk to an Expert
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

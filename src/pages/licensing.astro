@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { states } from '../data/states';
+
+const licenseData = states.map((state, i) => ({
+  name: state.name,
+  abbreviation: state.abbreviation,
+  licenseNumber: `ML-${(123456 + i * 111).toString()}`,
+  licenseType: "Mortgage Lender",
+  regulator: getRegulator(state.abbreviation),
+}));
+
+function getRegulator(abbr: string): string {
+  const regulators: Record<string, string> = {
+    CA: "Department of Financial Protection and Innovation",
+    TX: "Department of Savings and Mortgage Lending",
+    FL: "Office of Financial Regulation",
+    NY: "Department of Financial Services",
+    IL: "Department of Financial and Professional Regulation",
+    GA: "Department of Banking and Finance",
+    AZ: "Department of Insurance and Financial Institutions",
+    WA: "Department of Financial Institutions",
+    CO: "Division of Real Estate",
+    NC: "Commissioner of Banks",
+  };
+  return regulators[abbr] || "State Banking Department";
+}
+---
+
+<BaseLayout
+  title="Licensing Information — State Licenses | Intra Mortgage"
+  description="View Intra Mortgage's state licensing information. We are licensed to conduct mortgage lending in all 50 states. NMLS# 123456."
+  canonicalUrl="/licensing"
+>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="relative overflow-hidden -mt-18 bg-navy-950">
+    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-transparent"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-16 md:pt-44 md:pb-20">
+      <div class="max-w-2xl">
+        <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-4">
+          Regulatory Compliance
+        </p>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-[1.08] mb-6">
+          Licensing <span class="text-gradient">Information</span>
+        </h1>
+        <p class="text-white/65 text-base md:text-lg leading-relaxed max-w-xl">
+          Intra Mortgage LLC (NMLS# 123456) is licensed to originate residential mortgage loans in all 50 states and the District of Columbia. Below is a summary of our state licensing information.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BREADCRUMB ==================== -->
+  <div class="bg-navy-900 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <nav class="flex items-center gap-2 text-xs text-white/40" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-white/70">Licensing</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ==================== COMPANY INFO ==================== -->
+  <section class="bg-navy-900 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 fade-up">
+        <div class="text-center">
+          <div class="text-cyan-500 text-2xl font-extrabold">NMLS# 123456</div>
+          <div class="text-white/40 text-xs mt-2">Company NMLS ID</div>
+        </div>
+        <div class="text-center">
+          <div class="text-white text-2xl font-extrabold">50 States + D.C.</div>
+          <div class="text-white/40 text-xs mt-2">Licensed Jurisdictions</div>
+        </div>
+        <div class="text-center">
+          <div class="text-white text-2xl font-extrabold">Mortgage Lender</div>
+          <div class="text-white/40 text-xs mt-2">License Type</div>
+        </div>
+        <div class="text-center">
+          <div class="text-white text-2xl font-extrabold">Active</div>
+          <div class="text-white/40 text-xs mt-2">License Status</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== STATE LICENSES ==================== -->
+  <section class="section-padding bg-navy-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 fade-up">
+        <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-3">By State</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white">State Licensing Details</h2>
+        <p class="text-white/45 text-sm mt-3 max-w-xl mx-auto">
+          The following states are where Intra Mortgage currently operates. Click on any state to view our location-specific lending information.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {licenseData.map((license) => (
+          <div class="glass rounded-xl p-5 hover-card fade-up">
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center gap-3">
+                <span class="w-10 h-10 bg-cyan-500/10 border border-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-500 text-xs font-extrabold">
+                  {license.abbreviation}
+                </span>
+                <h3 class="text-white text-sm font-bold">{license.name}</h3>
+              </div>
+              <span class="text-emerald-400/80 text-[10px] font-semibold bg-emerald-400/10 px-2 py-0.5 rounded-full border border-emerald-400/20">
+                Active
+              </span>
+            </div>
+            <div class="space-y-1.5 text-xs">
+              <div class="flex justify-between">
+                <span class="text-white/35">License #</span>
+                <span class="text-white/60 font-medium">{license.licenseNumber}</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-white/35">Type</span>
+                <span class="text-white/60 font-medium">{license.licenseType}</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-white/35">Regulator</span>
+                <span class="text-white/60 font-medium text-right max-w-[200px]">{license.regulator}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== REGULATORY CONTACT ==================== -->
+  <section class="section-padding bg-gradient-to-b from-navy-950 to-navy-900">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10 fade-up">
+        <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-3">Need Help?</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white">Regulatory Contact Information</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="glass rounded-2xl p-7 fade-up">
+          <h3 class="text-white text-base font-bold mb-4">Intra Mortgage Compliance</h3>
+          <div class="space-y-3 text-white/50 text-sm">
+            <p>For licensing inquiries or compliance questions:</p>
+            <div class="space-y-2">
+              <p><strong class="text-white/70">Compliance Department</strong></p>
+              <p>1234 Financial Drive, Suite 500</p>
+              <p>Dallas, TX 75201</p>
+              <p>Email: <a href="mailto:compliance@intramortgage.com" class="text-cyan-500 hover:text-cyan-400 transition-colors">compliance@intramortgage.com</a></p>
+              <p>Phone: <a href="tel:+18005550199" class="text-cyan-500 hover:text-cyan-400 transition-colors">(800) 555-0199</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-7 fade-up">
+          <h3 class="text-white text-base font-bold mb-4">NMLS Consumer Access</h3>
+          <div class="space-y-3 text-white/50 text-sm">
+            <p>To verify our licensing status or file a complaint through the NMLS system:</p>
+            <div class="space-y-2">
+              <p><strong class="text-white/70">NMLS Consumer Access</strong></p>
+              <p>
+                <a
+                  href="https://www.nmlsconsumeraccess.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-cyan-500 hover:text-cyan-400 transition-colors"
+                >
+                  www.nmlsconsumeraccess.org
+                </a>
+              </p>
+              <p class="mt-2">Search for Intra Mortgage using NMLS# 123456 to view our complete regulatory record, licensing history, and any public enforcement actions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DISCLAIMER ==================== -->
+  <section class="bg-navy-900 border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="fade-up">
+        <p class="text-white/30 text-xs leading-relaxed text-center">
+          Intra Mortgage LLC, NMLS# 123456. Equal Housing Lender. Rates, terms, and availability subject to change without notice. Not all borrowers will qualify. This is not a commitment to lend. All license numbers shown are placeholders for illustrative purposes. For the most current licensing information, please visit the NMLS Consumer Access website at nmlsconsumeraccess.org.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

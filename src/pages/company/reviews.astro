@@ -1,0 +1,248 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const featured = [
+  {
+    name: "Jennifer & Mark T.",
+    location: "Austin, TX",
+    loanType: "Conventional Purchase",
+    rating: 5,
+    quote: "From our first phone call to closing day, Intra Mortgage made us feel like we were their only client. Our loan officer answered every question with patience and clarity. We closed in just 18 days and saved over $4,000 compared to the other lender we were considering. We could not have asked for a better experience buying our first home.",
+  },
+  {
+    name: "David & Priya R.",
+    location: "Bellevue, WA",
+    loanType: "Jumbo Purchase",
+    rating: 5,
+    quote: "We needed a jumbo loan for our new home and were nervous about the process. The Intra team walked us through every step, found us a rate that beat three other lenders, and kept the entire process on track. Their technology platform made uploading documents a breeze. We closed on time with zero surprises.",
+  },
+];
+
+const reviews = [
+  {
+    name: "Michael S.",
+    location: "Denver, CO",
+    loanType: "VA Purchase",
+    rating: 5,
+    quote: "As a veteran, finding a lender who truly understands VA loans was important to me. Intra not only got me a fantastic rate but also waived origination fees. The entire process was seamless from start to finish.",
+  },
+  {
+    name: "Lisa M.",
+    location: "Charlotte, NC",
+    loanType: "FHA Purchase",
+    rating: 5,
+    quote: "I was a first-time buyer with a lot of questions and some credit challenges. My loan officer at Intra never made me feel judged. She helped me understand my options and got me into my first home with an FHA loan.",
+  },
+  {
+    name: "Carlos & Ana G.",
+    location: "Phoenix, AZ",
+    loanType: "Conventional Refinance",
+    rating: 5,
+    quote: "We refinanced with Intra and dropped our rate by over a full point. The process was incredibly smooth and we are saving $380 every month. Wish we had done it sooner.",
+  },
+  {
+    name: "Sarah K.",
+    location: "Raleigh, NC",
+    loanType: "Conventional Purchase",
+    rating: 5,
+    quote: "In a competitive market like Raleigh, having a strong pre-approval letter made all the difference. Intra got our pre-approval done in 24 hours and we won a multiple-offer situation. Truly grateful for their speed.",
+  },
+  {
+    name: "James W.",
+    location: "Tampa, FL",
+    loanType: "FHA Refinance",
+    rating: 4,
+    quote: "Great communication throughout the process. My loan officer kept me updated at every stage. The only minor issue was a brief delay with the appraisal, but the team handled it quickly and we still closed on time.",
+  },
+  {
+    name: "Keisha B.",
+    location: "Atlanta, GA",
+    loanType: "Conventional Purchase",
+    rating: 5,
+    quote: "Buying a home as a single mom felt overwhelming, but my Intra team made it manageable. They found me a down payment assistance program I did not even know I qualified for. I am now a proud homeowner thanks to their expertise.",
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Intra Mortgage",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "1253",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [...featured, ...reviews].map(r => ({
+    "@type": "Review",
+    "author": { "@type": "Person", "name": r.name },
+    "reviewRating": { "@type": "Rating", "ratingValue": r.rating.toString(), "bestRating": "5" },
+    "reviewBody": r.quote,
+  })),
+};
+
+function stars(count: number) {
+  return Array.from({ length: 5 }, (_, i) => i < count ? 'filled' : 'empty');
+}
+---
+
+<BaseLayout
+  title="Reviews & Testimonials — What Our Borrowers Say | Intra Mortgage"
+  description="Read real reviews from Intra Mortgage borrowers. With a 4.9-star average across 1,250+ reviews, see why families nationwide trust us with their home loans."
+  canonicalUrl="/company/reviews"
+  schema={schema}
+>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="relative overflow-hidden -mt-18 bg-navy-950">
+    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-transparent"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-16 md:pt-44 md:pb-20">
+      <div class="max-w-2xl">
+        <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-4">
+          Real Stories, Real Results
+        </p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.08] mb-6">
+          Borrower <span class="text-gradient">Reviews</span>
+        </h1>
+        <p class="text-white/65 text-base md:text-lg leading-relaxed max-w-xl">
+          Our reputation is built one family at a time. Here is what our borrowers have to say about their experience with Intra Mortgage.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BREADCRUMB ==================== -->
+  <div class="bg-navy-900 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <nav class="flex items-center gap-2 text-xs text-white/40" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <a href="/company/about" class="hover:text-white transition-colors">Company</a>
+        <span>/</span>
+        <span class="text-white/70">Reviews</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ==================== AGGREGATE RATING ==================== -->
+  <section class="bg-navy-900 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-8 fade-up">
+        <div class="text-center">
+          <div class="text-5xl md:text-6xl font-extrabold text-white">4.9</div>
+          <div class="flex items-center justify-center gap-1 mt-2">
+            {stars(5).map((s) => (
+              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            ))}
+          </div>
+          <div class="text-white/40 text-sm mt-2">out of 5 stars</div>
+        </div>
+        <div class="h-16 w-px bg-white/10 hidden md:block"></div>
+        <div class="text-center md:text-left">
+          <div class="text-3xl font-extrabold text-white">1,250+</div>
+          <div class="text-white/40 text-sm mt-1">Verified Reviews</div>
+        </div>
+        <div class="h-16 w-px bg-white/10 hidden md:block"></div>
+        <div class="text-center md:text-left">
+          <div class="text-3xl font-extrabold text-white">97%</div>
+          <div class="text-white/40 text-sm mt-1">Would Recommend</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FEATURED REVIEWS ==================== -->
+  <section class="section-padding bg-navy-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 fade-up">
+        <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-3">Featured</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white">Top Reviews</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        {featured.map((review) => (
+          <div class="glass rounded-2xl p-8 hover-card fade-up">
+            <div class="flex items-center gap-1 mb-4">
+              {stars(review.rating).map((s) => (
+                <svg class={`w-5 h-5 ${s === 'filled' ? 'text-amber-400' : 'text-white/15'}`} fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </div>
+            <blockquote class="text-white/60 text-sm leading-relaxed mb-6 italic">
+              &ldquo;{review.quote}&rdquo;
+            </blockquote>
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-white font-bold text-sm">{review.name}</div>
+                <div class="text-white/35 text-xs mt-0.5">{review.location}</div>
+              </div>
+              <span class="text-cyan-500/70 text-xs font-semibold bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
+                {review.loanType}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ALL REVIEWS ==================== -->
+  <section class="section-padding bg-gradient-to-b from-navy-950 to-navy-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 fade-up">
+        <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-3">More Stories</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white">What Borrowers Are Saying</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {reviews.map((review) => (
+          <div class="glass rounded-2xl p-6 hover-card fade-up">
+            <div class="flex items-center gap-1 mb-3">
+              {stars(review.rating).map((s) => (
+                <svg class={`w-4 h-4 ${s === 'filled' ? 'text-amber-400' : 'text-white/15'}`} fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </div>
+            <blockquote class="text-white/50 text-sm leading-relaxed mb-5 italic">
+              &ldquo;{review.quote}&rdquo;
+            </blockquote>
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-white font-semibold text-sm">{review.name}</div>
+                <div class="text-white/30 text-xs mt-0.5">{review.location}</div>
+              </div>
+              <span class="text-cyan-500/60 text-[10px] font-semibold">{review.loanType}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="relative overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1600&h=500&fit=crop"
+      alt="Beautiful modern home"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/92 to-cyan-600/88"></div>
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3">Ready to Write Your Own Success Story?</h2>
+      <p class="text-white/85 text-base mb-8">Join the thousands of families who have trusted Intra Mortgage with their biggest investment.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/apply" class="inline-block bg-white text-cyan-600 text-sm font-bold px-10 py-4 rounded-xl hover:bg-white/90 transition-colors">
+          Get Pre-Approved &rarr;
+        </a>
+        <a href="/company/contact" class="inline-block bg-white/20 text-white text-sm font-bold px-10 py-4 rounded-xl border border-white/30 hover:bg-white/30 transition-colors">
+          Talk to an Expert
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

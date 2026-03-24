@@ -1,0 +1,220 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const benefits = [
+  {
+    icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`,
+    title: "Comprehensive Health Benefits",
+    desc: "Full medical, dental, and vision coverage for you and your family. We also offer an HSA with employer match, mental health resources, and wellness stipends.",
+  },
+  {
+    icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4" /></svg>`,
+    title: "Remote & Hybrid Flexibility",
+    desc: "Work from anywhere with our remote-first culture, or join us in one of our regional offices. We trust our team to deliver results, wherever they are.",
+  },
+  {
+    icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>`,
+    title: "Growth & Development",
+    desc: "Annual learning budgets, mentorship programs, internal promotions, and clear career paths. We invest in your professional development because your growth fuels ours.",
+  },
+  {
+    icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+    title: "Competitive Compensation",
+    desc: "Top-of-market salaries, performance bonuses, 401(k) with company match, and equity opportunities. We believe in rewarding the people who drive our success.",
+  },
+];
+
+const jobs = [
+  {
+    title: "Senior Loan Officer",
+    department: "Lending",
+    location: "Remote (US)",
+    type: "Full-time",
+    desc: "Originate and close residential mortgage loans while providing exceptional service to borrowers. Ideal candidates bring 3+ years of mortgage origination experience and a proven track record of client satisfaction.",
+  },
+  {
+    title: "Loan Processor",
+    department: "Operations",
+    location: "Remote (US)",
+    type: "Full-time",
+    desc: "Manage loan files from application through closing, coordinating with borrowers, underwriters, and third parties. Strong attention to detail and experience with Encompass or similar LOS required.",
+  },
+  {
+    title: "Marketing Manager",
+    department: "Marketing",
+    location: "Remote (US)",
+    type: "Full-time",
+    desc: "Lead multi-channel marketing campaigns to drive borrower acquisition and brand awareness. Experience in financial services marketing, content strategy, and performance analytics preferred.",
+  },
+  {
+    title: "Underwriter",
+    department: "Lending",
+    location: "Hybrid (Dallas, TX)",
+    type: "Full-time",
+    desc: "Review and analyze mortgage applications to assess risk and ensure compliance with company and agency guidelines. DE/SAR certification and 2+ years of underwriting experience preferred.",
+  },
+];
+---
+
+<BaseLayout
+  title="Careers at Intra Mortgage — Join Our Team"
+  description="Explore career opportunities at Intra Mortgage. We offer competitive benefits, remote flexibility, and a mission-driven culture. See open positions and apply today."
+  canonicalUrl="/company/careers"
+>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="relative overflow-hidden -mt-18">
+    <img
+      src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&h=600&fit=crop&crop=center"
+      alt="Modern office space with natural light"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-950/85 to-navy-950/50"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-20 md:pt-44 md:pb-24">
+      <div class="max-w-2xl">
+        <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-4">
+          We Are Hiring
+        </p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.08] mb-6">
+          Build Your Career.<br />Change <span class="text-gradient">Lives</span>.
+        </h1>
+        <p class="text-white/65 text-base md:text-lg leading-relaxed max-w-xl">
+          At Intra Mortgage, you will do meaningful work that helps families achieve the dream of homeownership. Join a team where innovation, integrity, and impact are part of the everyday.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BREADCRUMB ==================== -->
+  <div class="bg-navy-900 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <nav class="flex items-center gap-2 text-xs text-white/40" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <a href="/company/about" class="hover:text-white transition-colors">Company</a>
+        <span>/</span>
+        <span class="text-white/70">Careers</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ==================== CULTURE ==================== -->
+  <section class="section-padding bg-navy-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="fade-up">
+          <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-3">Our Culture</p>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-white leading-tight mb-6">
+            A Place Where You Can<br />Do Your Best Work
+          </h2>
+          <div class="space-y-4 text-white/55 text-sm leading-relaxed">
+            <p>
+              We believe great companies are built by great people. That is why we invest heavily in our team's well-being, growth, and success. At Intra, you are not just filling a role — you are shaping the future of how families get home loans.
+            </p>
+            <p>
+              Our team operates with a startup's agility and a seasoned company's stability. We celebrate wins together, learn from challenges, and hold each other to high standards. Whether you are a seasoned mortgage pro or looking to break into the industry, there is a place for you here.
+            </p>
+          </div>
+        </div>
+        <div class="fade-up">
+          <div class="relative rounded-2xl overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&h=500&fit=crop"
+              alt="Team members collaborating at a table"
+              class="w-full h-auto object-cover"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/40 to-transparent"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BENEFITS ==================== -->
+  <section class="section-padding bg-gradient-to-b from-navy-950 to-navy-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 fade-up">
+        <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-3">Perks & Benefits</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white">Why People Love Working Here</h2>
+        <p class="text-white/45 text-sm mt-3 max-w-xl mx-auto">
+          We take care of our team so they can take care of our borrowers.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {benefits.map((benefit) => (
+          <div class="glass rounded-2xl p-7 hover-card fade-up">
+            <div class="w-14 h-14 bg-cyan-500/10 border border-cyan-500/20 rounded-xl flex items-center justify-center text-cyan-500 mb-5">
+              <Fragment set:html={benefit.icon} />
+            </div>
+            <h3 class="text-white text-base font-bold mb-3">{benefit.title}</h3>
+            <p class="text-white/45 text-sm leading-relaxed">{benefit.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== OPEN POSITIONS ==================== -->
+  <section class="section-padding bg-navy-900">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 fade-up">
+        <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-3">Open Positions</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white">Current Openings</h2>
+        <p class="text-white/45 text-sm mt-3 max-w-xl mx-auto">
+          Do not see your perfect role? We are always looking for talented people. Send us your resume and we will keep you in mind.
+        </p>
+      </div>
+      <div class="space-y-4">
+        {jobs.map((job) => (
+          <a href="/company/contact" class="group glass rounded-2xl p-6 block hover-card fade-up">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div class="flex-1">
+                <h3 class="text-white text-lg font-bold group-hover:text-cyan-400 transition-colors">{job.title}</h3>
+                <div class="flex flex-wrap items-center gap-3 mt-2">
+                  <span class="text-white/40 text-xs flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                    {job.department}
+                  </span>
+                  <span class="text-white/40 text-xs flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                    {job.location}
+                  </span>
+                  <span class="text-cyan-500/70 text-xs font-semibold bg-cyan-500/10 px-2.5 py-0.5 rounded-full border border-cyan-500/20">
+                    {job.type}
+                  </span>
+                </div>
+                <p class="text-white/40 text-sm leading-relaxed mt-3">{job.desc}</p>
+              </div>
+              <div class="shrink-0">
+                <span class="text-cyan-500 text-sm font-semibold group-hover:translate-x-1 transition-transform inline-block">
+                  Apply Now &rarr;
+                </span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="relative overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&h=500&fit=crop"
+      alt="Team members high-fiving"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/92 to-cyan-600/88"></div>
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3">Do Not See Your Role?</h2>
+      <p class="text-white/85 text-base mb-8">Send us your resume and tell us what excites you about Intra Mortgage. We are always looking for exceptional people.</p>
+      <a href="/company/contact" class="inline-block bg-white text-cyan-600 text-sm font-bold px-10 py-4 rounded-xl hover:bg-white/90 transition-colors">
+        Get in Touch &rarr;
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>

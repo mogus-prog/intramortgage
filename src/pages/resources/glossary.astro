@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const terms = [
+  { term: "Adjustable-Rate Mortgage (ARM)", definition: "A mortgage with an interest rate that changes periodically based on a benchmark index. ARMs typically start with a lower fixed rate for an initial period (e.g., 5 or 7 years), then adjust annually. They can be advantageous if you plan to sell or refinance before the adjustment period begins." },
+  { term: "Amortization", definition: "The process of gradually paying off a loan through scheduled, periodic payments of principal and interest. In the early years, a larger portion of your payment goes toward interest; over time, more goes toward reducing the principal balance." },
+  { term: "Annual Percentage Rate (APR)", definition: "The total yearly cost of borrowing expressed as a percentage. APR includes the interest rate plus other charges such as mortgage insurance, closing costs, and points, giving you a more complete picture of the loan's true cost than the interest rate alone." },
+  { term: "Appraisal", definition: "A professional assessment of a property's market value conducted by a licensed appraiser. Lenders require appraisals to ensure the home is worth at least the amount being borrowed. The appraisal protects both the buyer and the lender from overpaying." },
+  { term: "Closing Costs", definition: "Fees and expenses paid at the closing of a real estate transaction, typically ranging from 2% to 5% of the loan amount. These can include origination fees, title insurance, appraisal fees, attorney fees, recording fees, and prepaid items like property taxes and homeowners insurance." },
+  { term: "Closing Disclosure", definition: "A five-page document provided to the borrower at least three business days before closing. It details the final loan terms, projected monthly payments, closing costs, and how much cash you need to bring to closing." },
+  { term: "Conforming Loan", definition: "A mortgage that meets the guidelines set by Fannie Mae and Freddie Mac, including maximum loan limits. Conforming loans typically offer lower interest rates than non-conforming (jumbo) loans because they can be sold on the secondary market." },
+  { term: "Conventional Loan", definition: "A mortgage not insured or guaranteed by a government agency (such as FHA, VA, or USDA). Conventional loans typically require higher credit scores and larger down payments but offer more flexibility in terms and property types." },
+  { term: "Debt-to-Income Ratio (DTI)", definition: "A percentage that compares your total monthly debt payments to your gross monthly income. Lenders use DTI to assess your ability to manage monthly payments. Most lenders prefer a DTI of 43% or less, though some loan programs allow higher ratios." },
+  { term: "Down Payment", definition: "The upfront cash payment made by the buyer toward the purchase price of a home. Down payment requirements vary by loan type: conventional loans may require as little as 3%, FHA loans require 3.5%, while VA and USDA loans may require no down payment at all." },
+  { term: "Earnest Money", definition: "A good-faith deposit made by the buyer when submitting an offer on a home, demonstrating serious intent to purchase. Earnest money is typically 1% to 3% of the purchase price and is held in escrow until closing, when it is applied toward the down payment or closing costs." },
+  { term: "Escrow", definition: "A neutral third-party account that holds funds during the homebuying process. After closing, an escrow account may be maintained by your lender to collect and pay property taxes and homeowners insurance on your behalf as part of your monthly mortgage payment." },
+  { term: "FHA Loan", definition: "A government-backed mortgage insured by the Federal Housing Administration. FHA loans are popular with first-time buyers because they allow lower credit scores (as low as 580) and smaller down payments (3.5%). They do require mortgage insurance premiums (MIP) for the life of the loan in most cases." },
+  { term: "Fixed-Rate Mortgage", definition: "A mortgage with an interest rate that remains the same for the entire loan term. The most common terms are 15 and 30 years. Fixed-rate mortgages provide predictable monthly payments, making them the most popular choice among homebuyers." },
+  { term: "Home Equity", definition: "The difference between your home's current market value and the outstanding balance on your mortgage. Equity builds as you pay down your loan and as your property appreciates in value. You can tap into equity through a home equity loan, HELOC, or cash-out refinance." },
+  { term: "Homeowners Insurance", definition: "An insurance policy that protects your home and personal property against damage, theft, and liability. Lenders require homeowners insurance as a condition of the mortgage. Premiums can be paid annually or monthly through an escrow account." },
+  { term: "Interest Rate", definition: "The percentage charged by a lender for borrowing money, expressed as an annual rate. Your interest rate determines how much you pay in interest over the life of the loan. Rates are influenced by market conditions, your credit score, loan type, and down payment amount." },
+  { term: "Jumbo Loan", definition: "A mortgage that exceeds the conforming loan limits set by the Federal Housing Finance Agency (FHFA). Jumbo loans are used to finance luxury properties or homes in highly competitive real estate markets. They typically require higher credit scores, larger down payments, and may carry slightly higher interest rates." },
+  { term: "Loan Estimate", definition: "A standardized three-page document provided within three business days of applying for a mortgage. It outlines the estimated interest rate, monthly payment, closing costs, and other key loan terms, allowing you to compare offers from different lenders." },
+  { term: "Loan-to-Value Ratio (LTV)", definition: "The ratio of the mortgage amount to the appraised value of the property, expressed as a percentage. For example, a $180,000 loan on a $200,000 home has an LTV of 90%. Higher LTV ratios typically require private mortgage insurance (PMI)." },
+  { term: "Mortgage Insurance (PMI/MIP)", definition: "Insurance that protects the lender if you default on your loan. Private Mortgage Insurance (PMI) is required on conventional loans when the down payment is less than 20%. Mortgage Insurance Premium (MIP) is required on FHA loans. PMI can be removed once you reach 20% equity; MIP typically remains for the life of the loan." },
+  { term: "Origination Fee", definition: "A fee charged by the lender for processing a new loan application. Origination fees typically range from 0.5% to 1% of the total loan amount and cover the cost of underwriting, document preparation, and funding the loan." },
+  { term: "Points (Discount Points)", definition: "Upfront fees paid to the lender at closing in exchange for a reduced interest rate. One point equals 1% of the loan amount. Buying points can lower your monthly payment and save money over the life of the loan, especially if you plan to stay in the home for many years." },
+  { term: "Pre-Approval", definition: "A lender's conditional commitment to lend you a specific amount based on a review of your financial information, including income, assets, credit history, and debts. Pre-approval strengthens your offer and shows sellers you are a serious, qualified buyer." },
+  { term: "Pre-Qualification", definition: "An informal estimate of how much you may be able to borrow, based on self-reported financial information. Pre-qualification is a useful starting point but carries less weight than a pre-approval because it does not involve verification of your financial documents." },
+  { term: "Principal", definition: "The original amount of money borrowed in a mortgage, excluding interest. Each monthly payment includes a portion that goes toward reducing the principal balance. As the principal decreases over time, you build more equity in your home." },
+  { term: "Refinance", definition: "The process of replacing an existing mortgage with a new one, typically to secure a lower interest rate, change the loan term, or access home equity through a cash-out refinance. Refinancing involves closing costs, so it is important to calculate the break-even point." },
+  { term: "Title Insurance", definition: "An insurance policy that protects the buyer and lender against claims or disputes over the ownership of a property. Title insurance covers issues such as liens, encumbrances, or defects in the title that were not discovered during the title search." },
+  { term: "Underwriting", definition: "The process by which a lender evaluates your financial profile and the property to determine whether to approve your mortgage application. Underwriters review your credit, income, assets, employment, and the appraisal to ensure the loan meets all guidelines." },
+  { term: "VA Loan", definition: "A mortgage guaranteed by the U.S. Department of Veterans Affairs, available to eligible veterans, active-duty service members, and surviving spouses. VA loans offer significant benefits including no down payment, no PMI, competitive interest rates, and limited closing costs." },
+];
+
+// Group terms by first letter
+const grouped = terms.reduce((acc, item) => {
+  const letter = item.term[0].toUpperCase();
+  if (!acc[letter]) acc[letter] = [];
+  acc[letter].push(item);
+  return acc;
+}, {} as Record<string, typeof terms>);
+
+const letters = Object.keys(grouped).sort();
+---
+
+<BaseLayout
+  title="Mortgage Glossary — Key Terms Explained | Intra Mortgage"
+  description="Understand mortgage terminology with our comprehensive glossary. Clear, plain-English definitions of APR, DTI, escrow, PMI, underwriting, and 25+ more key terms."
+  canonicalUrl="/resources/glossary"
+>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="relative overflow-hidden -mt-18 bg-navy-950">
+    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-transparent"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-16 md:pt-44 md:pb-20">
+      <div class="max-w-2xl">
+        <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-4">
+          Knowledge Base
+        </p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.08] mb-6">
+          Mortgage <span class="text-gradient">Glossary</span>
+        </h1>
+        <p class="text-white/65 text-base md:text-lg leading-relaxed max-w-xl">
+          The mortgage world is full of jargon. We break down every term you need to know in plain, easy-to-understand language so you can navigate the process with confidence.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BREADCRUMB ==================== -->
+  <div class="bg-navy-900 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <nav class="flex items-center gap-2 text-xs text-white/40" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <a href="/resources" class="hover:text-white transition-colors">Resources</a>
+        <span>/</span>
+        <span class="text-white/70">Glossary</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ==================== JUMP NAV ==================== -->
+  <section class="bg-navy-950 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="text-white/40 text-xs font-semibold mr-2">Jump to:</span>
+        {letters.map((letter) => (
+          <a
+            href={`#letter-${letter}`}
+            class="w-9 h-9 flex items-center justify-center rounded-lg text-sm font-bold text-white/50 hover:text-cyan-400 hover:bg-cyan-500/10 border border-white/8 hover:border-cyan-500/30 transition-all"
+          >
+            {letter}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== GLOSSARY TERMS ==================== -->
+  <section class="section-padding bg-navy-950">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      {letters.map((letter) => (
+        <div id={`letter-${letter}`} class="mb-12 scroll-mt-24">
+          <div class="flex items-center gap-4 mb-6 fade-up">
+            <div class="w-12 h-12 bg-cyan-500/10 border border-cyan-500/20 rounded-xl flex items-center justify-center">
+              <span class="text-cyan-500 text-xl font-extrabold">{letter}</span>
+            </div>
+            <div class="flex-1 h-px bg-white/8"></div>
+          </div>
+          <div class="space-y-4">
+            {grouped[letter].map((item) => (
+              <div class="glass rounded-2xl p-6 hover-card fade-up">
+                <h3 class="text-white text-base font-bold mb-2">{item.term}</h3>
+                <p class="text-white/50 text-sm leading-relaxed">{item.definition}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/92 to-cyan-600/88"></div>
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3">Have Questions About a Term?</h2>
+      <p class="text-white/85 text-base mb-8">Our loan officers are happy to walk you through any mortgage concept in detail.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/company/contact" class="inline-block bg-white text-cyan-600 text-sm font-bold px-10 py-4 rounded-xl hover:bg-white/90 transition-colors">
+          Talk to an Expert &rarr;
+        </a>
+        <a href="/apply" class="inline-block bg-white/20 text-white text-sm font-bold px-10 py-4 rounded-xl border border-white/30 hover:bg-white/30 transition-colors">
+          Get Pre-Approved
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

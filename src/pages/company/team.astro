@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const team = [
+  {
+    name: "David Chen",
+    role: "CEO & Founder",
+    img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
+    bio: "With over 20 years in financial services, David founded Intra Mortgage to create a lending experience built on transparency and technology. He previously held leadership positions at two of the nation's largest retail lenders.",
+  },
+  {
+    name: "Maria Gonzalez",
+    role: "Chief Lending Officer",
+    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
+    bio: "Maria oversees all lending operations and product development. A 15-year mortgage veteran, she is passionate about designing loan programs that serve borrowers of all backgrounds and credit profiles.",
+  },
+  {
+    name: "James Wilson",
+    role: "VP of Operations",
+    img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+    bio: "James ensures every loan moves through the pipeline efficiently and on time. His focus on process optimization has helped Intra achieve a 21-day average close time, well below the industry standard.",
+  },
+  {
+    name: "Sarah Kim",
+    role: "Head of Technology",
+    img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
+    bio: "Sarah leads the engineering team building Intra's digital lending platform. She brings experience from fintech startups and Fortune 500 companies, with a mission to make mortgages as simple as ordering online.",
+  },
+  {
+    name: "Robert Thompson",
+    role: "Senior Loan Officer",
+    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+    bio: "Robert has personally helped over 2,000 families close on their homes. Specializing in VA and FHA loans, he is known for his patience with first-time buyers and his encyclopedic knowledge of loan programs.",
+  },
+  {
+    name: "Priya Patel",
+    role: "VP of Compliance",
+    img: "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&h=400&fit=crop&crop=face",
+    bio: "Priya ensures Intra Mortgage meets all federal and state regulatory requirements. With a background in banking law, she keeps the company ahead of changing regulations while protecting borrower interests.",
+  },
+  {
+    name: "Marcus Johnson",
+    role: "Director of Marketing",
+    img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&crop=face",
+    bio: "Marcus leads brand strategy and borrower education initiatives. He believes that an informed borrower is an empowered borrower and has built a content program that reaches over 100,000 readers monthly.",
+  },
+  {
+    name: "Emily Nguyen",
+    role: "Head of Customer Experience",
+    img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
+    bio: "Emily ensures every borrower has a five-star experience from first call to closing day. She introduced Intra's real-time loan tracking system and borrower feedback program that drives continuous improvement.",
+  },
+];
+---
+
+<BaseLayout
+  title="Our Team — Meet the People Behind Intra Mortgage"
+  description="Meet the experienced professionals behind Intra Mortgage. Our leadership team brings decades of mortgage, technology, and financial services expertise to serve you better."
+  canonicalUrl="/company/team"
+>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="relative overflow-hidden -mt-18">
+    <img
+      src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&h=600&fit=crop&crop=center"
+      alt="Intra Mortgage team working together"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-950/85 to-navy-950/50"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-20 md:pt-44 md:pb-24">
+      <div class="max-w-2xl">
+        <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-4">
+          Our People
+        </p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.08] mb-6">
+          The Team Behind<br />Your <span class="text-gradient">Home Loan</span>
+        </h1>
+        <p class="text-white/65 text-base md:text-lg leading-relaxed max-w-xl">
+          Experienced professionals who combine deep mortgage expertise with a genuine passion for helping people achieve homeownership.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BREADCRUMB ==================== -->
+  <div class="bg-navy-900 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <nav class="flex items-center gap-2 text-xs text-white/40" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <a href="/company/about" class="hover:text-white transition-colors">Company</a>
+        <span>/</span>
+        <span class="text-white/70">Our Team</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ==================== TEAM GRID ==================== -->
+  <section class="section-padding bg-navy-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14 fade-up">
+        <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-3">Leadership</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white">Meet Our Team</h2>
+        <p class="text-white/45 text-sm mt-3 max-w-xl mx-auto">
+          Over 200 dedicated professionals nationwide, led by a team that has collectively helped fund over $5 billion in home loans.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {team.map((member) => (
+          <div class="group glass rounded-2xl overflow-hidden hover-card fade-up">
+            <div class="overflow-hidden">
+              <img
+                src={member.img}
+                alt={member.name}
+                class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-white text-base font-bold">{member.name}</h3>
+              <p class="text-cyan-500 text-xs font-semibold mt-1">{member.role}</p>
+              <p class="text-white/40 text-sm leading-relaxed mt-3">{member.bio}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== JOIN OUR TEAM CTA ==================== -->
+  <section class="relative overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&h=500&fit=crop"
+      alt="Team collaborating in modern office"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/92 to-cyan-600/88"></div>
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3">Join Our Team</h2>
+      <p class="text-white/85 text-base mb-4">
+        We are always looking for talented, driven people who share our mission of making homeownership accessible.
+      </p>
+      <p class="text-white/70 text-sm mb-8">
+        Competitive compensation, comprehensive benefits, and a culture that values growth, innovation, and work-life balance.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/company/careers" class="inline-block bg-white text-cyan-600 text-sm font-bold px-10 py-4 rounded-xl hover:bg-white/90 transition-colors">
+          View Open Positions &rarr;
+        </a>
+        <a href="/company/contact" class="inline-block bg-white/20 text-white text-sm font-bold px-10 py-4 rounded-xl border border-white/30 hover:bg-white/30 transition-colors">
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

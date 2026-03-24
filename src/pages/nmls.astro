@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="NMLS Consumer Access | Intra Mortgage"
+  description="Access Intra Mortgage's NMLS registration information, licensing details, and regulatory disclosures. NMLS# 123456."
+  canonicalUrl="/nmls"
+>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="relative overflow-hidden -mt-18 bg-navy-950">
+    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-transparent"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-16 md:pt-44 md:pb-20">
+      <div class="max-w-2xl">
+        <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-4">
+          Regulatory Information
+        </p>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-[1.08] mb-6">
+          NMLS <span class="text-gradient">Consumer Access</span>
+        </h1>
+        <p class="text-white/65 text-base md:text-lg leading-relaxed max-w-xl">
+          Intra Mortgage is committed to regulatory transparency. Below you will find our licensing information and links to verify our credentials through the Nationwide Multistate Licensing System.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BREADCRUMB ==================== -->
+  <div class="bg-navy-900 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <nav class="flex items-center gap-2 text-xs text-white/40" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-white/70">NMLS Consumer Access</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ==================== NMLS INFO ==================== -->
+  <section class="section-padding bg-navy-950">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- NMLS Card -->
+      <div class="glass rounded-2xl p-8 md:p-10 mb-8 fade-up">
+        <div class="flex flex-col md:flex-row md:items-center gap-6 mb-8">
+          <div class="w-20 h-20 bg-cyan-500/10 border border-cyan-500/20 rounded-2xl flex items-center justify-center shrink-0">
+            <svg class="w-10 h-10 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="text-white text-2xl font-extrabold">Intra Mortgage LLC</h2>
+            <div class="flex flex-wrap items-center gap-4 mt-2">
+              <span class="text-cyan-500 text-lg font-bold">NMLS# 123456</span>
+              <span class="text-white/30 text-sm">|</span>
+              <span class="text-white/50 text-sm">Licensed in 50 States + D.C.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div>
+            <h3 class="text-white/40 text-xs font-semibold uppercase tracking-wider mb-2">Company Headquarters</h3>
+            <p class="text-white/60 text-sm leading-relaxed">
+              1234 Financial Drive, Suite 500<br />
+              Dallas, TX 75201
+            </p>
+          </div>
+          <div>
+            <h3 class="text-white/40 text-xs font-semibold uppercase tracking-wider mb-2">Contact</h3>
+            <p class="text-white/60 text-sm leading-relaxed">
+              Phone: <a href="tel:+18005550199" class="text-cyan-500 hover:text-cyan-400 transition-colors">(800) 555-0199</a><br />
+              Email: <a href="mailto:info@intramortgage.com" class="text-cyan-500 hover:text-cyan-400 transition-colors">info@intramortgage.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- NMLS Consumer Access Link -->
+      <div class="glass rounded-2xl p-8 mb-8 fade-up">
+        <h2 class="text-white text-xl font-extrabold mb-4">Verify Our Credentials</h2>
+        <p class="text-white/50 text-sm leading-relaxed mb-6">
+          The NMLS Consumer Access website allows consumers to confirm that the company or individual they are working with is properly licensed to conduct mortgage lending business in their state. You can verify Intra Mortgage's licensing status and view our public regulatory record.
+        </p>
+        <a
+          href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/123456"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-white text-sm font-bold px-8 py-4 rounded-xl transition-colors"
+        >
+          Visit NMLS Consumer Access
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- What is NMLS -->
+      <div class="glass rounded-2xl p-8 mb-8 fade-up">
+        <h2 class="text-white text-xl font-extrabold mb-4">What is NMLS?</h2>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">
+          The Nationwide Multistate Licensing System & Registry (NMLS) is a system created by the Conference of State Bank Supervisors (CSBS) and the American Association of Residential Mortgage Regulators (AARMR) to facilitate the licensing of mortgage companies and mortgage loan originators across all 50 states.
+        </p>
+        <p class="text-white/50 text-sm leading-relaxed">
+          NMLS Consumer Access is a free public service that allows anyone to search for and verify the registration and licensing information of companies and individuals who are required to register through the NMLS system. This includes mortgage lenders, brokers, and loan originators.
+        </p>
+      </div>
+
+      <!-- State Licensing Disclosures -->
+      <div class="glass rounded-2xl p-8 fade-up">
+        <h2 class="text-white text-xl font-extrabold mb-4">State Licensing Disclosures</h2>
+        <p class="text-white/50 text-sm leading-relaxed mb-6">
+          Intra Mortgage is licensed to conduct mortgage lending in all 50 states and the District of Columbia. Some states require specific disclosures, which are provided below.
+        </p>
+        <div class="space-y-4 text-white/50 text-sm leading-relaxed">
+          <div class="border-b border-white/5 pb-4">
+            <h3 class="text-white/70 font-bold mb-1">California</h3>
+            <p>Licensed by the Department of Financial Protection and Innovation under the California Residential Mortgage Lending Act, License #41DBO-123456.</p>
+          </div>
+          <div class="border-b border-white/5 pb-4">
+            <h3 class="text-white/70 font-bold mb-1">Colorado</h3>
+            <p>Regulated by the Division of Real Estate. To check the license status of your mortgage broker, visit the Division of Real Estate website.</p>
+          </div>
+          <div class="border-b border-white/5 pb-4">
+            <h3 class="text-white/70 font-bold mb-1">Georgia</h3>
+            <p>Georgia Residential Mortgage Licensee, License #123456. Georgia Department of Banking and Finance, 2990 Brandywine Road, Suite 200, Atlanta, GA 30341-5565.</p>
+          </div>
+          <div class="border-b border-white/5 pb-4">
+            <h3 class="text-white/70 font-bold mb-1">Illinois</h3>
+            <p>Illinois Residential Mortgage Licensee. Illinois Department of Financial and Professional Regulation, Division of Banking, 100 West Randolph, 9th Floor, Chicago, IL 60601.</p>
+          </div>
+          <div class="border-b border-white/5 pb-4">
+            <h3 class="text-white/70 font-bold mb-1">New York</h3>
+            <p>Licensed Mortgage Banker, New York State Department of Financial Services. Complaints may be directed to: NYSDFS, One State Street, New York, NY 10004.</p>
+          </div>
+          <div class="border-b border-white/5 pb-4">
+            <h3 class="text-white/70 font-bold mb-1">Texas</h3>
+            <p>Licensed by the Texas Department of Savings and Mortgage Lending. Consumers wishing to file a complaint may contact the department at 2601 North Lamar, Suite 201, Austin, TX 78705.</p>
+          </div>
+          <div>
+            <h3 class="text-white/70 font-bold mb-1">Washington</h3>
+            <p>Washington Consumer Loan Company License #CL-123456. Licensed by the Washington State Department of Financial Institutions.</p>
+          </div>
+        </div>
+        <div class="mt-6 pt-6 border-t border-white/5">
+          <a href="/licensing" class="text-cyan-500 hover:text-cyan-400 text-sm font-semibold transition-colors">
+            View full state licensing information &rarr;
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>

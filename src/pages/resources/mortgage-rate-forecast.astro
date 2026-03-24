@@ -1,0 +1,400 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Mortgage Rate Forecast: What Experts Are Saying in 2026",
+  "description": "A look at where interest rates are heading this year and what it means for buyers and homeowners considering a refinance.",
+  "author": { "@type": "Organization", "name": "Intra Mortgage" },
+  "publisher": { "@type": "Organization", "name": "Intra Mortgage" },
+  "datePublished": "2026-03-12",
+  "dateModified": "2026-03-21"
+};
+
+const publishDate = "2026-03-12";
+const updateDate = "2026-03-21";
+
+const forecasts = [
+  { source: "Mortgage Bankers Association", prediction: "5.9% by Q4 2026", direction: "down" },
+  { source: "National Association of Realtors", prediction: "5.7% by year-end", direction: "down" },
+  { source: "Freddie Mac", prediction: "6.0 - 6.3% range", direction: "stable" },
+  { source: "Fannie Mae", prediction: "5.8% by late 2026", direction: "down" },
+];
+
+const factors = [
+  {
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>`,
+    title: "Federal Reserve Policy",
+    desc: "The Fed's decisions on the federal funds rate indirectly influence mortgage rates. When the Fed signals rate cuts, mortgage rates tend to decrease in anticipation.",
+  },
+  {
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>`,
+    title: "Inflation Trends",
+    desc: "Mortgage rates track closely with inflation expectations. As inflation cools toward the Fed's 2% target, rates tend to follow downward.",
+  },
+  {
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+    title: "Global Economic Conditions",
+    desc: "International events, trade policies, and global economic health affect investor demand for U.S. Treasury bonds, which directly impacts mortgage rates.",
+  },
+  {
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>`,
+    title: "Bond Market Activity",
+    desc: "Mortgage rates move in tandem with the 10-year Treasury yield. When bond yields rise, mortgage rates typically follow, and vice versa.",
+  },
+  {
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>`,
+    title: "Housing Market Supply & Demand",
+    desc: "Strong buyer demand and limited housing inventory can push rates higher, while a cooling market may lead to more competitive rates from lenders.",
+  },
+  {
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+    title: "Employment Data",
+    desc: "Strong job markets and low unemployment can keep rates elevated as the economy stays hot. Softening employment data typically leads to rate decreases.",
+  },
+];
+---
+
+<BaseLayout
+  title="Mortgage Rate Forecast 2026: What Experts Are Saying | Intra Mortgage"
+  description="Get the latest mortgage rate forecast for 2026. See what experts predict for interest rates, what's driving the market, and whether now is the right time to buy or refinance."
+  canonicalUrl="/resources/mortgage-rate-forecast"
+  schema={schema}
+>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="relative overflow-hidden -mt-18">
+    <img
+      src="https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=1600&h=600&fit=crop&crop=center"
+      alt="Financial charts and market data on a screen"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-950/85 to-navy-950/50"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-20 md:pt-44 md:pb-24">
+      <div class="max-w-2xl">
+        <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-4">Market Updates</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.08] mb-6">
+          Mortgage Rate<br /><span class="text-gradient">Forecast 2026</span>
+        </h1>
+        <div class="flex items-center gap-4 text-white/40 text-xs">
+          <time datetime={publishDate}>March 12, 2026</time>
+          <span>&middot;</span>
+          <span>4 min read</span>
+          <span>&middot;</span>
+          <span>Updated <time datetime={updateDate}>March 21, 2026</time></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BREADCRUMB ==================== -->
+  <div class="bg-navy-900 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <nav class="flex items-center gap-2 text-xs text-white/40" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <a href="/resources" class="hover:text-white transition-colors">Resources</a>
+        <span>/</span>
+        <span class="text-white/70">Mortgage Rate Forecast</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ==================== ARTICLE ==================== -->
+  <section class="section-padding bg-navy-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-[1fr_320px] gap-12">
+
+        <!-- Article Content -->
+        <article class="max-w-none">
+
+          <!-- Introduction -->
+          <div class="fade-up mb-12">
+            <div class="text-white/60 text-base leading-relaxed space-y-4">
+              <p class="text-lg text-white/70">
+                Mortgage rates have been one of the most watched financial indicators over the past few years. After peaking in late 2023, rates have gradually trended downward as inflation cools and the Federal Reserve adjusts its monetary policy. Here's where things stand and what the experts are predicting for the rest of 2026.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section: Current Rate Environment -->
+          <div class="fade-up mb-12">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-4">Current Rate Environment</h2>
+            <div class="text-white/55 text-sm leading-relaxed space-y-4">
+              <p>
+                As of early 2026, the average 30-year fixed mortgage rate sits in the low 6% range — a notable improvement from the peaks above 7.5% seen in late 2023. The 15-year fixed rate is averaging around 5.5%, and adjustable-rate mortgages (ARMs) continue to offer initial rates in the mid-5% range.
+              </p>
+              <p>
+                While these rates are higher than the historic lows of 2020-2021, they represent a return to more normal territory when viewed in a historical context. The long-term average for 30-year mortgages over the past 50 years is approximately 7.7%.
+              </p>
+            </div>
+            <div class="grid sm:grid-cols-3 gap-4 mt-6">
+              <div class="glass rounded-2xl p-5 text-center hover-card">
+                <div class="text-white/40 text-xs mb-1">30-Year Fixed</div>
+                <div class="text-cyan-500 text-3xl font-extrabold">6.15%</div>
+                <div class="text-white/25 text-xs mt-1">National average</div>
+              </div>
+              <div class="glass rounded-2xl p-5 text-center hover-card">
+                <div class="text-white/40 text-xs mb-1">15-Year Fixed</div>
+                <div class="text-cyan-500 text-3xl font-extrabold">5.48%</div>
+                <div class="text-white/25 text-xs mt-1">National average</div>
+              </div>
+              <div class="glass rounded-2xl p-5 text-center hover-card">
+                <div class="text-white/40 text-xs mb-1">5/1 ARM</div>
+                <div class="text-cyan-500 text-3xl font-extrabold">5.62%</div>
+                <div class="text-white/25 text-xs mt-1">National average</div>
+              </div>
+            </div>
+            <p class="text-white/25 text-xs mt-3">Rates shown are illustrative national averages and change daily. Your actual rate will depend on your credit profile, loan type, and other factors.</p>
+          </div>
+
+          <!-- Editorial Image -->
+          <div class="fade-up mb-12 rounded-2xl overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=900&h=400&fit=crop"
+              alt="Financial analysis charts and graphs on multiple screens"
+              class="w-full h-64 md:h-80 object-cover"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Section: Expert Predictions -->
+          <div class="fade-up mb-12">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-4">What the Experts Are Predicting</h2>
+            <div class="text-white/55 text-sm leading-relaxed space-y-4">
+              <p>
+                Most major housing industry forecasters agree that rates will trend modestly lower through the remainder of 2026, though the pace of decline remains uncertain. The consensus points to rates settling in the high 5% to low 6% range by year-end.
+              </p>
+            </div>
+            <div class="space-y-3 mt-6">
+              {forecasts.map((item) => (
+                <div class="glass rounded-2xl p-5 flex items-center justify-between hover-card">
+                  <div>
+                    <div class="text-white text-sm font-bold">{item.source}</div>
+                    <div class="text-white/40 text-xs mt-0.5">30-Year Fixed Forecast</div>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-cyan-500 text-lg font-extrabold">{item.prediction}</span>
+                    {item.direction === "down" ? (
+                      <svg class="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" /></svg>
+                    ) : (
+                      <svg class="w-5 h-5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" /></svg>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div class="text-white/55 text-sm leading-relaxed space-y-4 mt-6">
+              <p>
+                It's worth noting that rate forecasts are inherently uncertain. Unexpected economic events, geopolitical developments, or policy changes can shift the trajectory quickly. The experts have revised their predictions multiple times in recent years.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section: Factors Affecting Rates -->
+          <div class="fade-up mb-12">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-4">Key Factors Affecting Mortgage Rates</h2>
+            <div class="text-white/55 text-sm leading-relaxed space-y-4 mb-8">
+              <p>
+                Understanding what drives mortgage rates can help you make better timing decisions and set realistic expectations. Here are the most important factors at play right now.
+              </p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {factors.map((factor) => (
+                <div class="glass rounded-2xl p-6 hover-card">
+                  <div class="w-12 h-12 bg-cyan-500/10 border border-cyan-500/20 rounded-xl flex items-center justify-center text-cyan-500 mb-4">
+                    <Fragment set:html={factor.icon} />
+                  </div>
+                  <h3 class="text-white text-sm font-bold mb-2">{factor.title}</h3>
+                  <p class="text-white/45 text-xs leading-relaxed">{factor.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Editorial Image -->
+          <div class="fade-up mb-12 rounded-2xl overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&h=400&fit=crop"
+              alt="Beautiful modern home with green landscaping"
+              class="w-full h-64 md:h-80 object-cover"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Section: What This Means for Buyers -->
+          <div class="fade-up mb-12">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-4">What This Means for Buyers</h2>
+            <div class="text-white/55 text-sm leading-relaxed space-y-4">
+              <p>
+                For prospective homebuyers, the current rate environment presents both challenges and opportunities. Rates are not as low as the pandemic era, but they're improving. More importantly, today's market offers less competition than the bidding-war frenzy of 2021-2022.
+              </p>
+              <p>
+                Waiting for rates to drop further is a gamble. If rates do decline, home prices are likely to increase as more buyers enter the market, potentially offsetting any savings from a lower rate. Many housing economists emphasize that buying when you find the right home at a price you can afford is generally more important than trying to time rates perfectly.
+              </p>
+              <p>
+                Remember: you can always refinance later if rates drop significantly, but you can't go back in time to buy a home at today's price once values have increased.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section: Should You Lock In? -->
+          <div class="fade-up mb-12">
+            <div class="glass rounded-2xl p-8">
+              <h2 class="text-white font-bold text-xl mb-4">Should You Lock In Your Rate Now?</h2>
+              <div class="text-white/55 text-sm leading-relaxed space-y-4">
+                <p>
+                  Rate locks protect you from rate increases during the time between your loan application and closing. Here are some considerations for deciding when to lock:
+                </p>
+                <div class="grid sm:grid-cols-2 gap-4 mt-2">
+                  <div class="bg-green-500/8 rounded-xl p-4 border border-green-500/15">
+                    <h4 class="text-green-400 text-sm font-bold mb-2">Reasons to Lock Now</h4>
+                    <ul class="space-y-2">
+                      <li class="flex items-start gap-2">
+                        <svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-white/50 text-xs">You're comfortable with the current rate</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-white/50 text-xs">The payment fits your budget</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-white/50 text-xs">Economic uncertainty suggests rates could rise</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-white/50 text-xs">Your lender offers a float-down option</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="bg-amber-500/8 rounded-xl p-4 border border-amber-500/15">
+                    <h4 class="text-amber-400 text-sm font-bold mb-2">Reasons to Wait</h4>
+                    <ul class="space-y-2">
+                      <li class="flex items-start gap-2">
+                        <svg class="w-4 h-4 text-amber-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <span class="text-white/50 text-xs">Strong signals that rates will drop soon</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <svg class="w-4 h-4 text-amber-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <span class="text-white/50 text-xs">You're early in the process and not closing soon</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <svg class="w-4 h-4 text-amber-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <span class="text-white/50 text-xs">A Fed rate cut is expected within your timeline</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <svg class="w-4 h-4 text-amber-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <span class="text-white/50 text-xs">You can tolerate the risk of rates rising slightly</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <p>
+                  The best approach is to talk with your loan officer about your specific timeline and risk tolerance. Many lenders offer float-down options that let you lock in a rate but take advantage of a lower rate if one becomes available before closing.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Line -->
+          <div class="fade-up mb-12">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-4">The Bottom Line</h2>
+            <div class="text-white/55 text-sm leading-relaxed space-y-4">
+              <p>
+                The mortgage rate outlook for 2026 is cautiously optimistic. Most forecasters expect gradual improvement, with rates settling in the high 5% to low 6% range by year-end. However, the path won't be a straight line — expect fluctuations along the way.
+              </p>
+              <p>
+                For buyers, the key takeaway is to focus on what you can control: your credit score, your savings, and finding the right home at a price you can afford. Rates are important, but they're just one piece of the puzzle. Homeownership is a long-term investment, and the best time to buy is when you're financially ready.
+              </p>
+              <p>
+                For homeowners considering a refinance, it's worth getting a rate quote to see if today's rates represent a meaningful improvement over your current mortgage. Even a 0.5-0.75% reduction can save thousands over the life of the loan.
+              </p>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="fade-up">
+          <div class="lg:sticky lg:top-28 space-y-6">
+            <div class="glass rounded-2xl p-6">
+              <h3 class="text-white text-sm font-bold mb-4">In This Article</h3>
+              <div class="space-y-1">
+                <a href="#" class="block px-3 py-2 rounded-lg text-xs text-white/50 hover:text-white hover:bg-white/5 transition-all">Current Rate Environment</a>
+                <a href="#" class="block px-3 py-2 rounded-lg text-xs text-white/50 hover:text-white hover:bg-white/5 transition-all">Expert Predictions</a>
+                <a href="#" class="block px-3 py-2 rounded-lg text-xs text-white/50 hover:text-white hover:bg-white/5 transition-all">Factors Affecting Rates</a>
+                <a href="#" class="block px-3 py-2 rounded-lg text-xs text-white/50 hover:text-white hover:bg-white/5 transition-all">What It Means for Buyers</a>
+                <a href="#" class="block px-3 py-2 rounded-lg text-xs text-white/50 hover:text-white hover:bg-white/5 transition-all">Should You Lock In?</a>
+              </div>
+            </div>
+
+            <div class="glass rounded-2xl p-6">
+              <h3 class="text-white text-sm font-bold mb-3">Related Articles</h3>
+              <div class="space-y-2">
+                <a href="/resources/how-much-house-can-you-afford" class="block px-3 py-2.5 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">
+                  How Much House Can You Afford?
+                </a>
+                <a href="/resources/first-time-homebuyer-guide" class="block px-3 py-2.5 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">
+                  First-Time Homebuyer Guide
+                </a>
+              </div>
+            </div>
+
+            <div class="glass rounded-2xl p-6">
+              <h3 class="text-white text-sm font-bold mb-3">Free Tools</h3>
+              <div class="space-y-2">
+                <a href="/tools/mortgage-calculator" class="block px-3 py-2.5 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">
+                  Mortgage Calculator
+                </a>
+                <a href="/tools/affordability-calculator" class="block px-3 py-2.5 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">
+                  Affordability Calculator
+                </a>
+                <a href="/tools/refinance-calculator" class="block px-3 py-2.5 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all">
+                  Refinance Calculator
+                </a>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-cyan-500/15 to-cyan-600/10 rounded-2xl p-6 border border-cyan-500/20">
+              <h3 class="text-white text-sm font-bold mb-2">See Today's Rates</h3>
+              <p class="text-white/50 text-xs leading-relaxed mb-4">
+                Get a personalized rate quote based on your credit profile. Free, no obligation, and no impact to your credit score.
+              </p>
+              <a href="/apply" class="block bg-cyan-500 hover:bg-cyan-400 text-white text-center py-3 rounded-xl font-bold text-sm transition-colors">
+                Get Your Rate &rarr;
+              </a>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="relative overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&h=500&fit=crop"
+      alt="Beautiful home exterior at sunset"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/92 to-cyan-600/88"></div>
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3">Don't Wait for the Perfect Rate</h2>
+      <p class="text-white/85 text-base mb-8">The best time to buy is when you're ready. Get pre-approved today and we'll help you find the right loan at the best available rate.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/apply" class="inline-block bg-white text-cyan-600 text-sm font-bold px-10 py-4 rounded-xl hover:bg-white/90 transition-colors">
+          Get Pre-Approved &rarr;
+        </a>
+        <a href="/company/contact" class="inline-block bg-white/20 text-white text-sm font-bold px-10 py-4 rounded-xl border border-white/30 hover:bg-white/30 transition-colors">
+          Talk to an Expert
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
