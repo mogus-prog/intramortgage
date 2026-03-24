@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MortgageCalculator from '../../components/MortgageCalculator.tsx';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Mortgage Calculator",
+  "description": "Free mortgage calculator to estimate your monthly payment. Adjust home price, down payment, interest rate, and loan term.",
+  "provider": { "@type": "MortgageBroker", "name": "Intra Mortgage" },
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web"
+};
+---
+
+<BaseLayout
+  title="Free Mortgage Calculator | Intra Mortgage"
+  description="Use our free mortgage calculator to estimate your monthly payment. Adjust home price, down payment, interest rate, and loan term to see what you can afford."
+  schema={schema}
+>
+  <section class="section-padding bg-navy-950 mt-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-3">Free Tools</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Mortgage Calculator</h1>
+        <p class="text-white/50 text-base max-w-2xl mx-auto">Estimate your monthly mortgage payment. Adjust the sliders to see how home price, down payment, and interest rate affect your payment.</p>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <MortgageCalculator client:load />
+        </div>
+        <div class="space-y-8">
+          <div class="glass rounded-2xl p-6">
+            <h2 class="text-white font-bold text-lg mb-4">How to Use This Calculator</h2>
+            <div class="space-y-4 text-white/55 text-sm leading-relaxed">
+              <p><strong class="text-white/70">Home Price:</strong> The total purchase price of the home you're interested in.</p>
+              <p><strong class="text-white/70">Down Payment:</strong> The amount you'll pay upfront. A larger down payment means lower monthly payments and potentially no PMI.</p>
+              <p><strong class="text-white/70">Interest Rate:</strong> The annual interest rate on your mortgage. Rates vary based on your credit score, loan type, and market conditions.</p>
+              <p><strong class="text-white/70">Loan Term:</strong> The length of time to repay the loan. A 30-year term has lower monthly payments, while a 15-year term saves more on interest.</p>
+            </div>
+          </div>
+          <div class="glass rounded-2xl p-6">
+            <h2 class="text-white font-bold text-lg mb-3">Get Your Real Rate</h2>
+            <p class="text-white/50 text-sm mb-4">This calculator provides estimates. For a personalized rate based on your credit and financial situation, get pre-approved.</p>
+            <a href="/apply" class="block bg-cyan-500 hover:bg-cyan-400 text-white text-center py-3.5 rounded-xl font-bold text-sm transition-colors">
+              Get Pre-Approved →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

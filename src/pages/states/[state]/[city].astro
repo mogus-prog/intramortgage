@@ -1,0 +1,408 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { states } from '../../../data/states';
+import { loanPrograms } from '../../../data/loanPrograms';
+import type { StateData, City } from '../../../data/states';
+
+export function getStaticPaths() {
+  const paths: { params: { state: string; city: string }; props: { state: StateData; city: City } }[] = [];
+  for (const state of states) {
+    for (const city of state.cities) {
+      paths.push({
+        params: { state: state.slug, city: city.slug },
+        props: { state, city },
+      });
+    }
+  }
+  return paths;
+}
+
+interface Props {
+  state: StateData;
+  city: City;
+}
+
+const { state, city } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": `Intra Mortgage — ${city.name}, ${state.abbreviation}`,
+  "description": `Mortgage loans and home financing in ${city.name}, ${state.name}. Conventional, FHA, VA, USDA, and Jumbo loans with competitive rates.`,
+  "url": `https://intramortgage.com/states/${state.slug}/${city.slug}`,
+  "telephone": "+1-800-555-0199",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": city.name,
+    "addressRegion": state.abbreviation,
+    "addressCountry": "US"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": city.name,
+    "containedInPlace": { "@type": "State", "name": state.name }
+  },
+  "priceRange": "$$",
+  "openingHours": "Mo-Fr 08:00-18:00",
+  "parentOrganization": {
+    "@type": "MortgageBroker",
+    "name": "Intra Mortgage",
+    "url": "https://intramortgage.com"
+  }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://intramortgage.com" },
+    { "@type": "ListItem", "position": 2, "name": "States", "item": "https://intramortgage.com/states" },
+    { "@type": "ListItem", "position": 3, "name": state.name, "item": `https://intramortgage.com/states/${state.slug}` },
+    { "@type": "ListItem", "position": 4, "name": city.name, "item": `https://intramortgage.com/states/${state.slug}/${city.slug}` }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": `What mortgage rates are available in ${city.name}, ${state.abbreviation}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Mortgage rates in ${city.name} change daily based on market conditions. At Intra Mortgage, we offer competitive rates across all loan programs including Conventional, FHA, VA, and Jumbo loans. Contact us for a personalized rate quote for ${city.name}.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `How much do I need for a down payment on a home in ${city.name}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Down payment requirements in ${city.name} depend on your loan type. VA and USDA loans offer 0% down, conventional loans start at 3% down, and FHA loans require 3.5% down. ${city.medianHomePrice ? `With a median home price of ${city.medianHomePrice} in ${city.name}, a 3% conventional down payment would be approximately $${(parseFloat(city.medianHomePrice.replace(/[$,]/g, '')) * 0.03).toLocaleString()}.` : ''}`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `What is the median home price in ${city.name}, ${state.abbreviation}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `${city.medianHomePrice ? `The median home price in ${city.name}, ${state.abbreviation} is approximately ${city.medianHomePrice}. Actual prices vary significantly by neighborhood, property type, and condition.` : `Home prices in ${city.name}, ${state.abbreviation} vary by neighborhood and property type. Contact us for current market data and what you can afford.`}`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `Can I get pre-approved for a mortgage in ${city.name} online?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Yes! Intra Mortgage offers a fully online pre-approval process for ${city.name} homebuyers. Get your pre-approval letter in minutes and start shopping with confidence.`
+      }
+    }
+  ]
+};
+
+const cityFaqs = [
+  {
+    question: `What mortgage rates are available in ${city.name}, ${state.abbreviation}?`,
+    answer: `Mortgage rates in ${city.name} change daily based on market conditions. At Intra Mortgage, we offer competitive rates across all loan programs including Conventional, FHA, VA, and Jumbo loans. Contact us for a personalized rate quote for ${city.name}.`
+  },
+  {
+    question: `How much do I need for a down payment on a home in ${city.name}?`,
+    answer: `Down payment requirements in ${city.name} depend on your loan type. VA and USDA loans offer 0% down, conventional loans start at 3% down, and FHA loans require 3.5% down.${city.medianHomePrice ? ` With a median home price of ${city.medianHomePrice} in ${city.name}, a 3% conventional down payment would be approximately $${(parseFloat(city.medianHomePrice.replace(/[$,]/g, '')) * 0.03).toLocaleString()}.` : ''}`
+  },
+  {
+    question: `What is the median home price in ${city.name}?`,
+    answer: `${city.medianHomePrice ? `The median home price in ${city.name}, ${state.abbreviation} is approximately ${city.medianHomePrice}. Actual prices vary significantly by neighborhood, property type, and condition. Contact us for a detailed breakdown.` : `Home prices in ${city.name} vary widely by neighborhood and property type. Our local experts can provide current market data for your target areas.`}`
+  },
+  {
+    question: `Can I get pre-approved online for a ${city.name} home purchase?`,
+    answer: `Absolutely. Intra Mortgage offers a fully online pre-approval process for ${city.name} homebuyers. The process takes just minutes, and you will receive your pre-approval letter quickly so you can make competitive offers in the ${city.name} market.`
+  },
+  {
+    question: `What first-time homebuyer programs are available in ${city.name}?`,
+    answer: `First-time buyers in ${city.name}, ${state.name} may qualify for state and local down payment assistance programs, FHA loans with 3.5% down, VA loans with 0% down, and various grant programs. We will help you identify every program available for your situation.`
+  },
+];
+
+const otherCities = state.cities.filter(c => c.slug !== city.slug);
+
+const testimonial = {
+  name: "Happy Homeowner",
+  text: `The team at Intra Mortgage made my ${city.name} home purchase seamless. They found me a great rate and closed quickly. I could not have asked for a better experience.`,
+  location: `${city.name}, ${state.abbreviation}`,
+};
+---
+
+<BaseLayout
+  title={`Mortgage Loans in ${city.name}, ${state.abbreviation} | Home Loans | Intra Mortgage`}
+  description={`Find the best mortgage rates in ${city.name}, ${state.name}. ${city.medianHomePrice ? `Median home price: ${city.medianHomePrice}.` : ''} Conventional, FHA, VA, and Jumbo loans available. Get pre-approved today.`}
+  schema={schema}
+>
+
+  <!-- Additional Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden -mt-18">
+    <img
+      src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&h=600&fit=crop"
+      alt={`Homes in ${city.name}, ${state.abbreviation}`}
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-950/85 to-navy-950/40"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-16">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-white/40 mb-6 flex-wrap">
+        <a href="/" class="hover:text-cyan-500 transition-colors">Home</a>
+        <span>/</span>
+        <a href="/states" class="hover:text-cyan-500 transition-colors">States</a>
+        <span>/</span>
+        <a href={`/states/${state.slug}`} class="hover:text-cyan-500 transition-colors">{state.name}</a>
+        <span>/</span>
+        <span class="text-white/60">{city.name}</span>
+      </nav>
+
+      <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-3">Mortgage Loans in {state.abbreviation}</p>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-4">
+        Mortgage Loans in<br />{city.name}, {state.abbreviation}
+      </h1>
+      <p class="text-white/60 text-lg max-w-2xl mb-8">{city.description}</p>
+
+      <div class="flex flex-wrap gap-4">
+        {city.medianHomePrice && (
+          <div class="glass rounded-xl px-5 py-3">
+            <div class="text-cyan-500 text-xl font-extrabold">{city.medianHomePrice}</div>
+            <div class="text-white/40 text-xs">Median Home Price</div>
+          </div>
+        )}
+        <div class="glass rounded-xl px-5 py-3">
+          <div class="text-cyan-500 text-xl font-extrabold">{state.conformingLoanLimit}</div>
+          <div class="text-white/40 text-xs">Conforming Loan Limit</div>
+        </div>
+        {city.population && (
+          <div class="glass rounded-xl px-5 py-3">
+            <div class="text-cyan-500 text-xl font-extrabold">{city.population}</div>
+            <div class="text-white/40 text-xs">Population</div>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="section-padding bg-navy-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-12">
+
+        <!-- Main Content -->
+        <div class="lg:col-span-2 space-y-16">
+
+          <!-- Loan Programs Grid -->
+          <div class="fade-up">
+            <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-3">Available Programs</p>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-2">Loan Programs in {city.name}</h2>
+            <p class="text-white/45 text-sm mb-8">
+              Whether you are a first-time buyer, veteran, or looking to refinance, we have the right mortgage product for your {city.name} home purchase.
+            </p>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+              {loanPrograms.map((loan) => (
+                <a href={`/loans/${loan.slug}`} class="group block glass rounded-xl p-5 hover-card">
+                  <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-white font-bold text-sm">{loan.title}</h3>
+                    <span class="text-cyan-500 text-xs font-bold bg-cyan-500/10 px-2 py-0.5 rounded">{loan.minDownPayment}</span>
+                  </div>
+                  <p class="text-white/40 text-xs leading-relaxed mb-2">{loan.bestFor}</p>
+                  <p class="text-cyan-500 text-xs font-semibold group-hover:translate-x-1 transition-transform">Learn More →</p>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <!-- Local Market Info -->
+          <div class="fade-up">
+            <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-3">{city.name} Market</p>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-6">
+              Why Buy a Home in {city.name}?
+            </h2>
+            <div class="glass rounded-2xl p-6 md:p-8">
+              <p class="text-white/60 text-base leading-relaxed mb-6">{city.description}</p>
+
+              <div class="grid grid-cols-2 gap-4">
+                {city.medianHomePrice && (
+                  <div class="bg-white/[0.03] rounded-xl p-4 border border-white/5">
+                    <div class="text-cyan-500 text-lg font-extrabold">{city.medianHomePrice}</div>
+                    <div class="text-white/40 text-xs mt-1">Median Home Price</div>
+                  </div>
+                )}
+                <div class="bg-white/[0.03] rounded-xl p-4 border border-white/5">
+                  <div class="text-cyan-500 text-lg font-extrabold">{state.conformingLoanLimit}</div>
+                  <div class="text-white/40 text-xs mt-1">Conforming Loan Limit</div>
+                </div>
+                {city.population && (
+                  <div class="bg-white/[0.03] rounded-xl p-4 border border-white/5">
+                    <div class="text-cyan-500 text-lg font-extrabold">{city.population}</div>
+                    <div class="text-white/40 text-xs mt-1">Population</div>
+                  </div>
+                )}
+                <div class="bg-white/[0.03] rounded-xl p-4 border border-white/5">
+                  <div class="text-cyan-500 text-lg font-extrabold">21 Days</div>
+                  <div class="text-white/40 text-xs mt-1">Avg. Close Time</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Calculator CTA -->
+          <div class="fade-up">
+            <div class="glass rounded-2xl p-6 md:p-8 border border-cyan-500/20">
+              <div class="flex flex-col md:flex-row md:items-center gap-6">
+                <div class="flex-1">
+                  <h3 class="text-white font-bold text-lg mb-2">Calculate Your {city.name} Mortgage Payment</h3>
+                  <p class="text-white/45 text-sm leading-relaxed">
+                    {city.medianHomePrice
+                      ? `With a median home price of ${city.medianHomePrice} in ${city.name}, see what your monthly payment could look like.`
+                      : `Use our mortgage calculator to estimate your monthly payment for a home in ${city.name}.`
+                    }
+                  </p>
+                </div>
+                <a href="/tools/mortgage-calculator" class="inline-block bg-cyan-500 hover:bg-cyan-400 text-white text-center py-3.5 px-8 rounded-xl font-bold text-sm transition-colors flex-shrink-0">
+                  Open Calculator →
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial -->
+          <div class="fade-up">
+            <div class="glass rounded-2xl p-6 md:p-8">
+              <div class="text-amber-400 text-sm mb-3">★★★★★</div>
+              <p class="text-white/80 text-base md:text-lg leading-relaxed italic mb-4">"{testimonial.text}"</p>
+              <p class="text-white font-bold">{testimonial.name}</p>
+              <p class="text-white/40 text-sm">{testimonial.location}</p>
+            </div>
+          </div>
+
+          <!-- FAQs -->
+          <div class="fade-up">
+            <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-3">Common Questions</p>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-6">
+              {city.name} Mortgage FAQ
+            </h2>
+            <div class="space-y-4">
+              {cityFaqs.map((faq) => (
+                <details class="glass rounded-xl group">
+                  <summary class="p-5 cursor-pointer text-white font-semibold text-sm flex justify-between items-center list-none">
+                    {faq.question}
+                    <svg class="w-5 h-5 text-white/30 group-open:rotate-180 transition-transform flex-shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </summary>
+                  <div class="px-5 pb-5 text-white/55 text-sm leading-relaxed border-t border-white/5 pt-4">
+                    {faq.answer}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="space-y-6">
+          <!-- CTA Card -->
+          <div class="glass rounded-2xl p-6 sticky top-24">
+            <h3 class="text-white font-bold text-lg mb-2">Buy a Home in {city.name}</h3>
+            <p class="text-white/45 text-sm mb-6">Get pre-approved and start shopping in {city.name}, {state.abbreviation} today. Our process is fast and easy.</p>
+            <a href="/apply" class="block bg-cyan-500 hover:bg-cyan-400 text-white text-center py-3.5 rounded-xl font-bold text-sm transition-colors mb-3">
+              Get Pre-Approved →
+            </a>
+            <a href="/company/contact" class="block bg-white/5 hover:bg-white/10 text-white text-center py-3.5 rounded-xl font-semibold text-sm border border-white/10 transition-colors mb-6">
+              Talk to an Expert
+            </a>
+
+            <div class="border-t border-white/8 pt-5 space-y-4">
+              <p class="text-white/50 text-xs font-medium uppercase tracking-wider">Quick Facts</p>
+              <div class="space-y-3">
+                {city.medianHomePrice && (
+                  <div class="flex justify-between items-center">
+                    <span class="text-white/40 text-xs">Median Price</span>
+                    <span class="text-cyan-500 text-xs font-semibold">{city.medianHomePrice}</span>
+                  </div>
+                )}
+                <div class="flex justify-between items-center">
+                  <span class="text-white/40 text-xs">Loan Limit</span>
+                  <span class="text-cyan-500 text-xs font-semibold">{state.conformingLoanLimit}</span>
+                </div>
+                {city.population && (
+                  <div class="flex justify-between items-center">
+                    <span class="text-white/40 text-xs">Population</span>
+                    <span class="text-white/70 text-xs font-medium">{city.population}</span>
+                  </div>
+                )}
+                <div class="flex justify-between items-center">
+                  <span class="text-white/40 text-xs">State</span>
+                  <a href={`/states/${state.slug}`} class="text-cyan-500 text-xs font-medium hover:text-cyan-400 transition-colors">{state.name}</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="border-t border-white/8 pt-5 mt-5">
+              <p class="text-white/50 text-xs font-medium uppercase tracking-wider mb-3">Tools</p>
+              <a href="/tools/mortgage-calculator" class="flex items-center gap-2 text-white/60 text-sm hover:text-cyan-500 transition-colors mb-2">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+                Mortgage Calculator
+              </a>
+              <a href="/apply" class="flex items-center gap-2 text-white/60 text-sm hover:text-cyan-500 transition-colors">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Check Your Eligibility
+              </a>
+            </div>
+          </div>
+
+          <!-- Other Cities -->
+          {otherCities.length > 0 && (
+            <div class="glass rounded-2xl p-6">
+              <p class="text-white/50 text-xs font-medium uppercase tracking-wider mb-4">Other Cities in {state.name}</p>
+              <div class="space-y-2">
+                {otherCities.map((c) => (
+                  <a href={`/states/${state.slug}/${c.slug}`} class="flex items-center justify-between py-2 border-b border-white/5 last:border-0 group">
+                    <span class="text-white/60 text-sm group-hover:text-cyan-500 transition-colors">{c.name}</span>
+                    {c.medianHomePrice && (
+                      <span class="text-white/30 text-xs">{c.medianHomePrice}</span>
+                    )}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1600&h=500&fit=crop"
+      alt="Beautiful home"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/92 to-cyan-600/88"></div>
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3">Ready to Buy in {city.name}?</h2>
+      <p class="text-white/85 text-base mb-8">Get pre-approved online in minutes and make a competitive offer on your {city.name} dream home.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/apply" class="bg-white text-cyan-600 font-bold px-10 py-4 rounded-xl hover:bg-white/90 transition-colors">Get Pre-Approved →</a>
+        <a href="tel:+18005550199" class="bg-white/15 text-white font-semibold px-10 py-4 rounded-xl border border-white/25 hover:bg-white/25 transition-colors">Call (800) 555-0199</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

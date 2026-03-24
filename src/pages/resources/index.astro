@@ -1,0 +1,250 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const categories = ["All", "Buying Guide", "Refinancing", "First-Time Buyers", "Market Updates"];
+
+const posts = [
+  {
+    category: "Buying Guide",
+    title: "How Much House Can You Actually Afford in 2026?",
+    description: "Learn the formulas lenders use, the hidden costs most buyers miss, and how to set a realistic budget before you start shopping.",
+    readTime: "5 min read",
+    href: "/resources/how-much-house-can-you-afford",
+    img: "https://images.unsplash.com/photo-1560184897-ae75f418493e?w=600&h=400&fit=crop",
+  },
+  {
+    category: "First-Time Buyers",
+    title: "The Complete Guide to Buying Your First Home",
+    description: "Everything you need to know about the homebuying process, from saving for a down payment to getting the keys to your new place.",
+    readTime: "8 min read",
+    href: "/resources/first-time-homebuyer-guide",
+    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop",
+  },
+  {
+    category: "Market Updates",
+    title: "Mortgage Rate Forecast: What Experts Are Saying",
+    description: "A look at where interest rates are heading this year and what it means for buyers and homeowners considering a refinance.",
+    readTime: "4 min read",
+    href: "/resources/mortgage-rate-forecast",
+    img: "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=600&h=400&fit=crop",
+  },
+  {
+    category: "Refinancing",
+    title: "When Does It Make Sense to Refinance Your Mortgage?",
+    description: "Refinancing can save you thousands — but only if the timing is right. Here's how to know if it's the right move for you.",
+    readTime: "6 min read",
+    href: "/resources/when-to-refinance",
+    img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop",
+  },
+  {
+    category: "Buying Guide",
+    title: "Understanding Closing Costs: What to Expect",
+    description: "Closing costs can add up fast. We break down every fee you'll encounter so there are no surprises on closing day.",
+    readTime: "5 min read",
+    href: "/resources/understanding-closing-costs",
+    img: "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=600&h=400&fit=crop",
+  },
+  {
+    category: "First-Time Buyers",
+    title: "Down Payment Assistance Programs You Should Know About",
+    description: "Thousands of dollars in grants and programs exist to help first-time buyers. Find out which ones you might qualify for.",
+    readTime: "7 min read",
+    href: "/resources/down-payment-assistance",
+    img: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=600&h=400&fit=crop",
+  },
+];
+---
+
+<BaseLayout
+  title="Learning Center — Mortgage Tips & Guides | Intra Mortgage"
+  description="Explore expert guides, market updates, and tips for homebuyers and homeowners. Learn about mortgage rates, buying your first home, refinancing, and more."
+  canonicalUrl="/resources"
+>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="relative overflow-hidden -mt-18">
+    <img
+      src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&h=600&fit=crop&crop=center"
+      alt="Modern office library with books and warm lighting"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-950/85 to-navy-950/50"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-20 md:pt-44 md:pb-24">
+      <div class="max-w-2xl">
+        <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-4">
+          Learn & Feel Confident
+        </p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.08] mb-6">
+          Your Mortgage<br /><span class="text-gradient">Learning Center</span>
+        </h1>
+        <p class="text-white/65 text-base md:text-lg leading-relaxed max-w-xl">
+          Expert guides, market insights, and practical tips to help you make confident decisions about your biggest investment.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BREADCRUMB ==================== -->
+  <div class="bg-navy-900 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <nav class="flex items-center gap-2 text-xs text-white/40" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-white/70">Resources</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ==================== BLOG LISTING ==================== -->
+  <section class="section-padding bg-navy-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-[240px_1fr] gap-10">
+
+        <!-- Sidebar Filters -->
+        <aside class="fade-up">
+          <div class="glass rounded-2xl p-6 lg:sticky lg:top-28">
+            <h3 class="text-white text-sm font-bold mb-4">Categories</h3>
+            <div class="space-y-1" id="category-filters">
+              {categories.map((cat, i) => (
+                <button
+                  data-category={cat}
+                  class:list={[
+                    "category-btn w-full text-left px-3 py-2.5 rounded-lg text-sm transition-all duration-200",
+                    i === 0
+                      ? "bg-cyan-500/15 text-cyan-400 border border-cyan-500/25 font-semibold"
+                      : "text-white/50 hover:text-white hover:bg-white/5 border border-transparent"
+                  ]}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-white/8">
+              <h3 class="text-white text-sm font-bold mb-3">Stay Updated</h3>
+              <p class="text-white/40 text-xs leading-relaxed mb-4">
+                Get the latest mortgage tips and market updates delivered to your inbox.
+              </p>
+              <form class="space-y-3">
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  class="w-full bg-white/[0.06] border border-white/10 rounded-lg px-3 py-2.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-cyan-500/50 transition-colors"
+                />
+                <button
+                  type="submit"
+                  class="w-full bg-cyan-500 hover:bg-cyan-400 text-white text-sm font-semibold py-2.5 rounded-lg transition-colors"
+                >
+                  Subscribe
+                </button>
+              </form>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Post Grid -->
+        <div>
+          <div class="flex justify-between items-center mb-8 fade-up">
+            <h2 class="text-white text-xl font-bold" id="results-heading">All Articles</h2>
+            <span class="text-white/30 text-sm" id="results-count">{posts.length} articles</span>
+          </div>
+
+          <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-5" id="posts-grid">
+            {posts.map((post) => (
+              <a
+                href={post.href}
+                data-category={post.category}
+                class="post-card group block rounded-2xl overflow-hidden border border-white/6 hover-card bg-white/[0.02] fade-up"
+              >
+                <div class="overflow-hidden">
+                  <img
+                    src={post.img}
+                    alt={post.title}
+                    class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="p-5">
+                  <p class="text-cyan-500 text-[10px] font-semibold uppercase tracking-wider">{post.category}</p>
+                  <h3 class="text-white text-sm font-semibold mt-2 leading-snug group-hover:text-cyan-400 transition-colors">
+                    {post.title}
+                  </h3>
+                  <p class="text-white/40 text-xs leading-relaxed mt-2">
+                    {post.description}
+                  </p>
+                  <div class="flex items-center justify-between mt-4">
+                    <span class="text-white/25 text-xs">{post.readTime}</span>
+                    <span class="text-cyan-500 text-xs font-semibold group-hover:translate-x-1 transition-transform">Read More &rarr;</span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="relative overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1600&h=500&fit=crop"
+      alt="Beautiful home exterior"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/92 to-cyan-600/88"></div>
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3">Ready to Take the Next Step?</h2>
+      <p class="text-white/85 text-base mb-8">Our team is here to answer your questions and help you find the perfect loan.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/apply" class="inline-block bg-white text-cyan-600 text-sm font-bold px-10 py-4 rounded-xl hover:bg-white/90 transition-colors">
+          Get Pre-Approved &rarr;
+        </a>
+        <a href="/company/contact" class="inline-block bg-white/20 text-white text-sm font-bold px-10 py-4 rounded-xl border border-white/30 hover:bg-white/30 transition-colors">
+          Talk to an Expert
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script>
+  // Category filter functionality
+  const buttons = document.querySelectorAll('.category-btn');
+  const cards = document.querySelectorAll('.post-card');
+  const heading = document.getElementById('results-heading');
+  const count = document.getElementById('results-count');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const category = btn.getAttribute('data-category');
+
+      // Update active button styles
+      buttons.forEach((b) => {
+        b.classList.remove('bg-cyan-500/15', 'text-cyan-400', 'border-cyan-500/25', 'font-semibold');
+        b.classList.add('text-white/50', 'border-transparent');
+      });
+      btn.classList.add('bg-cyan-500/15', 'text-cyan-400', 'border-cyan-500/25', 'font-semibold');
+      btn.classList.remove('text-white/50', 'border-transparent');
+
+      // Filter cards
+      let visible = 0;
+      cards.forEach((card) => {
+        if (category === 'All' || card.getAttribute('data-category') === category) {
+          (card as HTMLElement).style.display = '';
+          visible++;
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+
+      // Update heading and count
+      if (heading) heading.textContent = category === 'All' ? 'All Articles' : category;
+      if (count) count.textContent = `${visible} article${visible !== 1 ? 's' : ''}`;
+    });
+  });
+</script>

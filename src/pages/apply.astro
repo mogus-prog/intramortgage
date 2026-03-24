@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Apply for a Mortgage | Intra Mortgage"
+  description="Start your mortgage application online. Get pre-approved in minutes with no impact to your credit score."
+>
+  <section class="section-padding bg-navy-950 mt-0">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-3">Get Started</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Apply Now</h1>
+        <p class="text-white/50 text-base">Get pre-approved in minutes. No impact to your credit score.</p>
+      </div>
+
+      <div class="glass rounded-2xl p-8">
+        <form class="space-y-6" id="apply-form">
+          <!-- Personal Info -->
+          <div>
+            <h2 class="text-white font-bold text-lg mb-4">Personal Information</h2>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="text-white/50 text-xs font-medium block mb-1.5">First Name</label>
+                <input type="text" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder:text-white/30 focus:border-cyan-500 focus:outline-none transition-colors" placeholder="John" />
+              </div>
+              <div>
+                <label class="text-white/50 text-xs font-medium block mb-1.5">Last Name</label>
+                <input type="text" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder:text-white/30 focus:border-cyan-500 focus:outline-none transition-colors" placeholder="Smith" />
+              </div>
+              <div>
+                <label class="text-white/50 text-xs font-medium block mb-1.5">Email Address</label>
+                <input type="email" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder:text-white/30 focus:border-cyan-500 focus:outline-none transition-colors" placeholder="john@example.com" />
+              </div>
+              <div>
+                <label class="text-white/50 text-xs font-medium block mb-1.5">Phone Number</label>
+                <input type="tel" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder:text-white/30 focus:border-cyan-500 focus:outline-none transition-colors" placeholder="(555) 123-4567" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Loan Info -->
+          <div class="border-t border-white/8 pt-6">
+            <h2 class="text-white font-bold text-lg mb-4">Loan Details</h2>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="text-white/50 text-xs font-medium block mb-1.5">Loan Purpose</label>
+                <select class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition-colors">
+                  <option value="purchase">Purchase a Home</option>
+                  <option value="refinance">Refinance</option>
+                  <option value="cashout">Cash-Out Refinance</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-white/50 text-xs font-medium block mb-1.5">Property Type</label>
+                <select class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition-colors">
+                  <option value="single">Single Family</option>
+                  <option value="condo">Condo</option>
+                  <option value="townhome">Townhome</option>
+                  <option value="multi">Multi-Family (2-4 units)</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-white/50 text-xs font-medium block mb-1.5">Estimated Home Price</label>
+                <input type="text" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder:text-white/30 focus:border-cyan-500 focus:outline-none transition-colors" placeholder="$400,000" />
+              </div>
+              <div>
+                <label class="text-white/50 text-xs font-medium block mb-1.5">Down Payment</label>
+                <input type="text" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder:text-white/30 focus:border-cyan-500 focus:outline-none transition-colors" placeholder="$80,000" />
+              </div>
+              <div>
+                <label class="text-white/50 text-xs font-medium block mb-1.5">Estimated Credit Score</label>
+                <select class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition-colors">
+                  <option value="excellent">Excellent (740+)</option>
+                  <option value="good">Good (700-739)</option>
+                  <option value="fair">Fair (660-699)</option>
+                  <option value="below">Below Average (620-659)</option>
+                  <option value="poor">Poor (below 620)</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-white/50 text-xs font-medium block mb-1.5">State</label>
+                <input type="text" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder:text-white/30 focus:border-cyan-500 focus:outline-none transition-colors" placeholder="California" />
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-white/8 pt-6">
+            <button type="submit" class="w-full bg-cyan-500 hover:bg-cyan-400 text-white font-bold py-4 rounded-xl transition-colors text-base">
+              Get My Free Quote →
+            </button>
+            <p class="text-white/30 text-xs text-center mt-3">No credit impact. No obligation. Your information is secure.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

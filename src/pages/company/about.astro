@@ -1,0 +1,231 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const values = [
+  {
+    icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>`,
+    title: "People Over Profits",
+    desc: "Every decision we make starts with one question: is this the best thing for our borrower? We earn trust by putting your interests first — always.",
+  },
+  {
+    icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>`,
+    title: "Innovation & Simplicity",
+    desc: "We use technology to make the mortgage process faster and less stressful — not more complicated. If it doesn't make your life easier, we don't build it.",
+  },
+  {
+    icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+    title: "Transparency at Every Step",
+    desc: "No hidden fees, no surprises, no fine print. We believe you deserve to know exactly what you're getting — and exactly what it costs.",
+  },
+];
+
+const stats = [
+  { value: "15,000+", label: "Families Served" },
+  { value: "50", label: "States Licensed" },
+  { value: "4.9 / 5", label: "Average Rating" },
+  { value: "21 Days", label: "Avg. Close Time" },
+  { value: "$5B+", label: "Loans Funded" },
+  { value: "200+", label: "Team Members" },
+];
+
+const team = [
+  {
+    name: "David Chen",
+    role: "CEO & Founder",
+    img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
+  },
+  {
+    name: "Maria Gonzalez",
+    role: "Chief Lending Officer",
+    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
+  },
+  {
+    name: "James Wilson",
+    role: "VP of Operations",
+    img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+  },
+  {
+    name: "Sarah Kim",
+    role: "Head of Technology",
+    img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
+  },
+];
+---
+
+<BaseLayout
+  title="About Us — Our Story & Mission | Intra Mortgage"
+  description="Learn about Intra Mortgage's mission to make homeownership accessible. Meet our team, explore our values, and discover why thousands of families trust us."
+  canonicalUrl="/company/about"
+>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="relative overflow-hidden -mt-18">
+    <img
+      src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&h=700&fit=crop&crop=center"
+      alt="Intra Mortgage team collaborating in a modern office"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-950/85 to-navy-950/40"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-20 md:pt-44 md:pb-28">
+      <div class="max-w-2xl">
+        <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-4">
+          Our Story
+        </p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.08] mb-6">
+          Built on Trust.<br />Driven by <span class="text-gradient">Purpose</span>.
+        </h1>
+        <p class="text-white/65 text-base md:text-lg leading-relaxed max-w-xl">
+          We started Intra Mortgage with a simple belief: getting a home loan shouldn't be confusing, stressful, or impersonal. It should feel like having a knowledgeable friend in your corner.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BREADCRUMB ==================== -->
+  <div class="bg-navy-900 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <nav class="flex items-center gap-2 text-xs text-white/40" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <a href="/company/about" class="hover:text-white transition-colors">Company</a>
+        <span>/</span>
+        <span class="text-white/70">About Us</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ==================== OUR STORY ==================== -->
+  <section class="section-padding bg-navy-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="fade-up">
+          <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-3">Who We Are</p>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-white leading-tight mb-6">
+            A Company Born From<br />a Better Idea
+          </h2>
+          <div class="space-y-4 text-white/55 text-sm leading-relaxed">
+            <p>
+              When our founder, David Chen, bought his first home, the experience was anything but smooth. Confusing paperwork, impersonal service, and a process that felt designed to keep borrowers in the dark. He knew there had to be a better way.
+            </p>
+            <p>
+              That frustration became the spark for Intra Mortgage. Founded in 2015, we set out to build a mortgage company that combines cutting-edge technology with genuine, human-first service. Today, we've helped over 15,000 families achieve their homeownership dreams — and we're just getting started.
+            </p>
+            <p>
+              Licensed in all 50 states and backed by a team of over 200 mortgage professionals, we've funded more than $5 billion in home loans. But the number we're most proud of? Our 4.9-star rating — earned one family at a time.
+            </p>
+          </div>
+        </div>
+        <div class="fade-up">
+          <div class="relative rounded-2xl overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&h=500&fit=crop"
+              alt="Team members working together at a desk"
+              class="w-full h-auto object-cover"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/40 to-transparent"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== VALUES ==================== -->
+  <section class="section-padding bg-gradient-to-b from-navy-950 to-navy-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 fade-up">
+        <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-3">What We Believe</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white">Our Core Values</h2>
+        <p class="text-white/45 text-sm mt-3 max-w-xl mx-auto">
+          These aren't just words on a wall. They guide every interaction, every product decision, and every loan we close.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5">
+        {values.map((value) => (
+          <div class="glass rounded-2xl p-7 hover-card fade-up">
+            <div class="w-14 h-14 bg-cyan-500/10 border border-cyan-500/20 rounded-xl flex items-center justify-center text-cyan-500 mb-5">
+              <Fragment set:html={value.icon} />
+            </div>
+            <h3 class="text-white text-lg font-bold mb-3">{value.title}</h3>
+            <p class="text-white/45 text-sm leading-relaxed">{value.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== STATS ==================== -->
+  <section class="bg-navy-900 border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="text-center mb-10 fade-up">
+        <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-3">By the Numbers</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white">Our Impact</h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        {stats.map((stat) => (
+          <div class="text-center fade-up">
+            <div class="text-cyan-500 text-2xl md:text-3xl font-extrabold">{stat.value}</div>
+            <div class="text-white/40 text-xs mt-2">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LEADERSHIP ==================== -->
+  <section class="section-padding bg-navy-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 fade-up">
+        <p class="text-cyan-500 text-xs font-semibold tracking-[3px] uppercase mb-3">Our Leadership</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white">Meet the Team</h2>
+        <p class="text-white/45 text-sm mt-3">Experienced professionals dedicated to making homeownership accessible for everyone.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {team.map((member) => (
+          <div class="group rounded-2xl overflow-hidden border border-white/6 hover-card bg-white/[0.02] fade-up">
+            <div class="overflow-hidden">
+              <img
+                src={member.img}
+                alt={member.name}
+                class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-5 text-center">
+              <h3 class="text-white text-sm font-bold">{member.name}</h3>
+              <p class="text-white/40 text-xs mt-1">{member.role}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="relative overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1600&h=500&fit=crop"
+      alt="Beautiful modern home"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/92 to-cyan-600/88"></div>
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3">Let's Work Together</h2>
+      <p class="text-white/85 text-base mb-8">Have questions or ready to get started? Our team would love to hear from you.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/apply" class="inline-block bg-white text-cyan-600 text-sm font-bold px-10 py-4 rounded-xl hover:bg-white/90 transition-colors">
+          Start Your Application &rarr;
+        </a>
+        <a href="/company/contact" class="inline-block bg-white/20 text-white text-sm font-bold px-10 py-4 rounded-xl border border-white/30 hover:bg-white/30 transition-colors">
+          Contact Us
+        </a>
+      </div>
+      <p class="text-white/60 text-sm mt-6">
+        Or call us directly: <a href="tel:+18005550199" class="text-white font-bold hover:underline">(800) 555-0199</a>
+      </p>
+    </div>
+  </section>
+
+</BaseLayout>
